@@ -28,10 +28,10 @@ class CardJogos extends Component {
                         </CabecalhoInfoJogo>                        
                         <ul>
                             <li>         
-                            Steam: R$2000000,00
+                            Steam: R$200,00
                             </li>
                             <li>         
-                            Epic: R$20,00
+                            Epic: R$25,00
                             </li>
                             <li>
                             Origin R$25,00    
