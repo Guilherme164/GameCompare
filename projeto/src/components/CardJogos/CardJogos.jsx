@@ -28,7 +28,7 @@ class CardJogos extends Component {
                         </CabecalhoInfoJogo>                        
                         <ul>
                             <li>         
-                            Steam: R$20,00
+                            Steam: R$20000,00
                             </li>
                             <li>         
                             Epic: R$20,00
