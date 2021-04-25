@@ -11,7 +11,17 @@ import { TituloInfoJogo } from './style';
 import { BtnDiv } from './style';
 import { Btn } from './style';
 import Logo from '../../assets/img/skyrim_logo.jpg';
+import connect from '../../connect';
 class CardJogos extends Component {
+    
+    state = {
+        jogos: [],
+    }
+    async componentDidMount(){
+        const response = await connect.get();
+        this.setState({jogos:response.data})  
+        console.log(response.data)      
+    }
 
        render() {
         return (
