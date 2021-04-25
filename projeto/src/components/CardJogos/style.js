@@ -84,6 +84,7 @@ export const BtnDiv = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 1rem;
   @media screen and (max-width: 700px) {		
 		width: 100%;
     align-items: center;
