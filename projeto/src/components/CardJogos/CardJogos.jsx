@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 // import "./style.css";
 import { Jogo } from './style';
 import { CardJogo } from './style';
@@ -11,19 +11,8 @@ import { TituloInfoJogo } from './style';
 import { BtnDiv } from './style';
 import { Btn } from './style';
 import Logo from '../../assets/img/skyrim_logo.jpg';
-import connect from '../../connect';
-class CardJogos extends Component {
-    
-    state = {
-        jogos: [],
-    }
-    async componentDidMount(){
-        const response = await connect.get();
-        this.setState({jogos:response.data})  
-        console.log(response.data)      
-    }
-
-       render() {
+// import connect from '../../connect';
+function CardJogos(){   
         return (
             <CardJogo>                      
                     <Jogo>                        
@@ -55,5 +44,4 @@ class CardJogos extends Component {
             </CardJogo>                
         );
     }
-}
 export default CardJogos;
