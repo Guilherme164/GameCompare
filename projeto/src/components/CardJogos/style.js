@@ -24,7 +24,7 @@ background-color: #fff;
 }
 `;
 
-export const CardJogo = styled.div`
+export const CardJogo = styled.article`
   display: flex;
 	align-items: center;
 	justify-content: center;

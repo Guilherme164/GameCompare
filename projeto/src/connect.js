@@ -1,5 +1,5 @@
 import axios from 'axios';
-const connect = axios.create({    
-     baseURL: 'http://game-oferta-api.herokuapp.com/game/doom'
+export const connect = axios.create({    
+     // baseURL: 'http://game-oferta-api.herokuapp.com/game/doom'
+     baseURL: 'https://game-oferta-api.herokuapp.com/games_deals?limit=15&order=desc'
 });
-export default connect;

@@ -5,10 +5,12 @@ const carregajogo = async setJogo => {
   const results = await connect.get();  
   setJogo(results.data); 
   console.log(results.data);
-  return results.data;
+  // const [jogoAtual, setJogo] = useState([results.data]);
+  //console.log(jogoAtual);
+  
+  // return results.data;
 };
 
-// console.log(carregajogo());
 export function useJogos() {
   const [jogoAtual, setJogo] = useState([]);
    useEffect(() => {

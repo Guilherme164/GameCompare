@@ -12,8 +12,9 @@ import { BtnDiv } from './style';
 import { Btn } from './style';
 // import Logo from '../../assets/img/skyrim_logo.jpg';
 
-function CardJogos({jogo}) {   
-    const Logo  = jogo[1].game_cover;    
+function CardJogos({jogo, page}) {   
+       const Logo  = jogo.cover;  
+    const lojas = jogo.deals;    
     return (
         <CardJogo>
             <Jogo>
@@ -24,14 +25,11 @@ function CardJogos({jogo}) {
                 </Imglink>
                 <InfoJogo>
                     <CabecalhoInfoJogo>
-                        <TituloInfoJogo>{jogo[1].game_name}</TituloInfoJogo>
+                        <TituloInfoJogo>{jogo.name}</TituloInfoJogo>
                     </CabecalhoInfoJogo>
-                    <ul>                        
-                        {/* <li>
-                            {jogo[1].store_name}: R${jogo[1].price_new}
-                        </li> */}
-                        {jogo.map(function(jogo, i){                        
-                        return <li key={jogo.id_store}>{jogo.store_name}: R${jogo.price_new}</li>
+                    <ul>             
+                        {lojas.map(function(lojas, i){                        
+                        return <li key={lojas.id_deal}>{lojas.store_name}: R${lojas.price_new}</li>
                         })}                        
                     </ul>
                     <BtnDiv>
