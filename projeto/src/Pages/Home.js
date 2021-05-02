@@ -1,27 +1,31 @@
 import React, { Fragment, useState, useEffect } from "react";
-import CardJogos from '../components/CardJogos';
+import ListaJogos from "../components/ListaJogos/ListaJogos";
 import Paginacao from "../components/Paginacao";
 import {connect} from '../connect';
 
 function Home() {    
   const [jogo, setJogo] = useState([]); 
-
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  
   async function carregajogosini(){    
     const results = await connect.get();       
-    setJogo(results.data);       
+    setJogo(results.data);           
+    setTotalPages(Math.ceil(results.data.length/ 5));
   };
 
     useEffect(() => {
     carregajogosini();
   }, []); 
 
+  const handleClick = num => {
+    setPage(num);
+  }
   if (jogo.length>0) {
     return(
       <Fragment>
-    {jogo.map(function(jogo, i){                        
-            return <CardJogos key={jogo.id} jogo={jogo}></CardJogos>
-    })} ´
-    <Paginacao />
+     <ListaJogos jogo={jogo} pagina={page}/>
+    <Paginacao totalPages={totalPages} handleClick={handleClick}/>
     </Fragment>);              
     } else {
     return (<Fragment><h1>Carregando</h1></Fragment>);
