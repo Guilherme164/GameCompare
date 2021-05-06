@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from "react";
 import ListaJogos from "../components/ListaJogos/ListaJogos";
 import Paginacao from "../components/Paginacao";
 import {connect} from '../connect';
+import "./style.css";
 
 function Home() {    
   const [jogo, setJogo] = useState([]); 
@@ -24,8 +25,8 @@ function Home() {
   if (jogo.length>0) {
     return(
       <Fragment>
-     <ListaJogos jogo={jogo} pagina={page}/>
-    <Paginacao totalPages={totalPages} handleClick={handleClick}/>
+     <div className="lista"><ListaJogos jogo={jogo} pagina={page}/></div>
+      <div className="paginacao"><Paginacao totalPages={totalPages} handleClick={handleClick}/></div>
     </Fragment>);              
     } else {
     return (<Fragment><h1>Carregando</h1></Fragment>);

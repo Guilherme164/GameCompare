@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 export const Img = styled.img`  
-  width:100%;
-  border-top-left-radius: 1em ;
-  border-top-right-radius: 1em ;
+  width:100%;  
 `;
 export const Jogo = styled.div`
 background-color: #fff;
@@ -11,7 +9,8 @@ background-color: #fff;
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 	display: flex;
 	max-width: 100%;
-	margin: 20px;
+	
+  margin-top: 0.5rem;
 	overflow: hidden;
 	width: 700px;	
 @media screen and (max-width: 700px) {
@@ -35,7 +34,7 @@ export const CardJogo = styled.article`
 export const Imglink = styled.div`
   background-color: #131316;
 	color: #fff;
-	padding: 30px;
+	padding: 5px;
 	max-width: 250px;
   @media screen and (max-width: 700px) {		
 		max-width: 700px;

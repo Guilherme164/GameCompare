@@ -20,8 +20,7 @@ function CardJogos({jogo, page}) {
             <Jogo>
                 <Imglink>
                     <Img src={Logo}></Img>
-                    <LinkTrailer href={"https://www.google.com"}>Ver Trailer
-                    </LinkTrailer>
+                    {/* <LinkTrailer href={"https://www.google.com"}>Ver Trailer</LinkTrailer> */}
                 </Imglink>
                 <InfoJogo>
                     <CabecalhoInfoJogo>
