@@ -10,6 +10,7 @@ import { CabecalhoInfoJogo } from './style';
 import { TituloInfoJogo } from './style';
 import { BtnDiv } from './style';
 import { Btn } from './style';
+import { List } from './style';
 // import Logo from '../../assets/img/skyrim_logo.jpg';
 
 function CardJogos({jogo, page}) {   
@@ -20,17 +21,17 @@ function CardJogos({jogo, page}) {
             <Jogo>
                 <Imglink>
                     <Img src={Logo}></Img>
-                    {/* <LinkTrailer href={"https://www.google.com"}>Ver Trailer</LinkTrailer> */}
+                    <LinkTrailer href={"https://www.google.com"}>Ver Trailer</LinkTrailer>
                 </Imglink>
                 <InfoJogo>
                     <CabecalhoInfoJogo>
                         <TituloInfoJogo>{jogo.name}</TituloInfoJogo>
                     </CabecalhoInfoJogo>
-                    <ul>             
+                    <List>             
                         {lojas.map(function(lojas, i){                        
                         return <li key={lojas.id_deal}>{lojas.store_name}: R${lojas.price_new}</li>
                         })}                        
-                    </ul>
+                    </List>
                     <BtnDiv>
                         <Btn>Adicionar Wishlist</Btn>
                     </BtnDiv>

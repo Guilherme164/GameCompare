@@ -6,11 +6,13 @@ function Paginacao({ totalPages, handleClick }) {
     return (
         <div class="pagination">
             { pages.map(num => (
-                <button
+                // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                <a
                     className="paginationbutton"
                     key={num}
-                    onClick={() => handleClick(num)}
-                >{num}</button>
+                    onClick={() => handleClick(num)}      
+                    // href="javascript:'{() => handleClick(num)}"                   
+                >{num}</a>
             ))}
         </div>
     );

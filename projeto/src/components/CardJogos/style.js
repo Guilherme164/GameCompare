@@ -7,12 +7,12 @@ export const Jogo = styled.div`
 background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-	display: flex;
+	display: flex;  
 	max-width: 100%;
 	
   margin-top: 0.5rem;
-	overflow: hidden;
-	width: 700px;	
+	
+	width: 600px;	
 @media screen and (max-width: 700px) {
 	
 		margin: 0;
@@ -35,9 +35,10 @@ export const Imglink = styled.div`
   background-color: #131316;
 	color: #fff;
 	padding: 5px;
-	max-width: 250px;
+	max-width: 90px;
+  min-width: 90px;
   @media screen and (max-width: 700px) {		
-		max-width: 700px;
+		max-width: 90px;
     align-items: center;
 			
 }
@@ -92,9 +93,10 @@ export const BtnDiv = styled.div`
 }
 `;
 export const Btn = styled.button`
-background-color: rgb(55, 109, 39);;
+background-color: #11998e;
+
 border: 0;
-border-radius: 50px;
+border-radius: 10px;
 box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 color: rgb(255, 255, 255);
 font-size: 16px;
@@ -102,4 +104,8 @@ padding: 12px 25px;
 bottom: 30px;	
 letter-spacing: 1px;
 `;
-
+export const List = styled.ul `
+text-align: center;
+list-style:none;
+padding:0px;
+`;
