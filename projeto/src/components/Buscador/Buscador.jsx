@@ -1,29 +1,31 @@
-import React  from "react";
+import React, { useState } from "react";
 import "./style.scss";
-import "../../assets/img/search.svg";
-export default function Buscador() {
-    let timer;
+import { FaSearch } from 'react-icons/fa';
 
-    // document.addEventListener('input', e => {
-    //     const el = e.target;
-
-    //     if (el.matches('[data-color]')) {
-    //         clearTimeout(timer);
-    //         timer = setTimeout(() => {
-    //             document.documentElement.style.setProperty(`--color-${el.dataset.color}`, el.value);
-    //         }, 100)
-    //     }
-    // })
+export default function Buscador({buscar}) {
+    const [pesquisa, setPesquisa] = useState("");
     return (
-        <article className="search"> 
-        <form class="form__group field">
-            <input type="input" class="form__field" placeholder="Pesquisar jogo:" id="search" name="search" />
-            <label for="name" class="form__label">Pesquisar jogo:</label>
-            {/* <button id="search_btn" name="search_btn" onClick="buscar()">
-                {/* 
-                </button>             */}
-            <button><i className="icon"></i></button>
-        </form>
+        <article className="search">
+            <form className="form__group field"
+                onSubmit={(event) => {
+                    event.preventDefault();
+                    buscar({ pesquisa });
+                }}>
+                <div className="form1">
+                    <input type="input" 
+                    className="form__field" 
+                    placeholder="Pesquisar jogo:" 
+                    onChange={(event) => {
+                        setPesquisa(event.target.value);
+                      }}
+                    />
+                    <label className="form__label">Pesquisar jogo:</label>
+                </div>
+                <div className="form2">
+                    <button type="submit" className="form__field search_btn" id="search_btn" name="search_btn">
+                        <FaSearch></FaSearch></button>
+                </div>
+            </form>
         </article>
 
     );

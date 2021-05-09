@@ -10,15 +10,13 @@ $gray: #9b9b9b;
 	flex-direction: column;
 }
 
-
 .form__group {
   position: relative;
   padding: 15px 0 0;
   margin-top: 10px;
   display: flex;
 	align-items: center;
-	justify-content: center;
-	flex-direction: column;
+	justify-content: center;	
   width: 600px;	
 }
 
@@ -75,21 +73,17 @@ $gray: #9b9b9b;
   &:required,&:invalid { box-shadow:none; }
 }
 
-.icon {
-  background-image: "";
+.search_btn {
+  color: $primary;
 }
 
-
-button {
-background-color: #11998e;
-border: 0;
-border-radius: 10px;
-box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-color: rgb(255, 255, 255);
-font-size: 16px;
-padding: 12px 25px;		
-bottom: 30px;	
-letter-spacing: 1px;
+.form1{
+  display: flex;
+  width:50%;
 }
 
+.form2{
+  display: flex;
+  width:2px;
+}
 
