@@ -3,6 +3,7 @@ import "./style.css";
 import { FaStar, FaPlus, FaChartLine } from 'react-icons/fa';
 
 import VanillaTilt from 'vanilla-tilt';
+import fitty from 'fitty';
 function CardJogos({ jogo, page }) {
     const Logo = jogo.cover;
     const lojas = jogo.deals;
@@ -12,17 +13,26 @@ function CardJogos({ jogo, page }) {
             glare: true,
             "max-glare": .5
         });
+
+        fitty('#' + jogo.plain, {
+            minSize: 24,
+            maxSize: 48,
+        });
     });
 
     // price_cut > 0 puxar td-cut (class)  
     return (
 
         <div className="game-card">
-            <div className="img_card">
+            <div className="img-card">
                 <img src={Logo}></img>
             </div>
             <div className="game-card-content">
-                <h3>{jogo.name}</h3>
+                <div className="game-card-header">
+                    <div className="game-card-title" id={jogo.plain}>
+                        {jogo.name}
+                    </div>
+                </div>
                 <hr></hr>
                 <div className="main-deal">
                     <table className="game-card-table">
