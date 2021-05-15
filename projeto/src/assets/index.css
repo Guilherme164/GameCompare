@@ -7,10 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #1e1e1ed9;
   color:azure;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#root {
+  width: 100%;
 }

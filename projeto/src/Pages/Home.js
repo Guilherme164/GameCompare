@@ -28,11 +28,11 @@ function Home() {
   if (jogo.length > 0) {
     
     return (
-      <Fragment>
+      <div className="container-game">
           <Buscador buscar={coletarDados}/>
           <div className="lista"><ListaJogos jogo={jogo} pagina={page} /></div>
           <div className="paginacao"><Paginacao totalPages={totalPages} handleClick={handleClick} /></div>
-      </Fragment>);
+      </div>);
   } else {
     return (<Fragment><h1>Carregando</h1></Fragment>);
   }
