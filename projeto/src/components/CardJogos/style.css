@@ -23,19 +23,6 @@ body{
   z-index: 1;
 } */
 
-.back-blur{
-  position: absolute;
-  text-align: center;
-  height: 100%;
-  width: 100%;
-  backdrop-filter: blur(0px);
-  transition: 0.5s;
-}
-
-.game-card:hover .back-blur{
-  backdrop-filter: blur(3px);
-}
-
 .game-card{
   position: relative;
   width: 264px;
@@ -93,9 +80,19 @@ body{
   font-size: 1.3em;
   margin-bottom: 10px;
 }
+
 .img_card{   
   position: absolute;
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
+  transition: .5s;
 }
+
+.game-card:hover .img_card{
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+}
+
 .other-deals{
   opacity: 0;
   transition: 0.5s;
