@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import { FaStar, FaPlus, FaChartLine } from 'react-icons/fa';
 
@@ -7,10 +7,13 @@ function CardJogos({ jogo, page }) {
     const Logo = jogo.cover;
     const lojas = jogo.deals;
 
-    VanillaTilt.init(document.querySelectorAll(".game-card"), {
-        glare: true,
-        "max-glare": .5
+    useEffect(() => {
+        VanillaTilt.init(document.querySelectorAll(".game-card"), {
+            glare: true,
+            "max-glare": .5
+        });
     });
+
     // price_cut > 0 puxar td-cut (class)  
     return (
 
