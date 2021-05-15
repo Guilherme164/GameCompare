@@ -4,7 +4,7 @@ import "./style.css";
 function Paginacao({ totalPages, handleClick }) {
     const pages = [...Array(totalPages).keys()].map(num => num + 1);
     return (
-        <div class="pagination">
+        <div className="pagination">
             { pages.map(num => (
                 // eslint-disable-next-line jsx-a11y/anchor-is-valid
                 <a

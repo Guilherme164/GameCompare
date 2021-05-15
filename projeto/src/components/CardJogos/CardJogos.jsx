@@ -26,31 +26,37 @@ function CardJogos({ jogo, page }) {
                 <hr></hr>
                 <div className="main-deal">
                     <table className="game-card-table">
-                        <tr>
-                            <td className="td-left">Steam</td>
-                            <td className="td-right"><span className="real">R$</span>65,90</td>
-                            <td className="td-cut">50%</td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td className="td-left">Steam</td>
+                                <td className="td-right"><span className="real">R$</span>65,90</td>
+                                <td className="td-cut">50%</td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div className="other-deals">
                     <table className="game-card-table">
-                        {lojas.map(function (lojas, i) {
-                            return <tr key={lojas.id_deal}>
-                                <td className="td-left">{lojas.store_name}</td>
-                                <td className="td-right"><span className="real">R$</span>{lojas.price_new}</td>
-                                <td className="td-nocut"></td>
-                            </tr>
-                        })}
+                        <tbody>
+                            {lojas.map(function (lojas, i) {
+                                return <tr key={lojas.id_deal}>
+                                    <td className="td-left">{lojas.store_name}</td>
+                                    <td className="td-right"><span className="real">R$</span>{lojas.price_new}</td>
+                                    <td className="td-nocut"></td>
+                                </tr>
+                            })}
+                        </tbody>
                     </table>
                 </div>
                 <div className="game-card-toolbar">
                     <table className="toolbar-table">
-                        <tr>
-                            <td><a href="#"><FaStar /></a></td>
-                            <td className="add-wishlist"><a href="#"><b><FaPlus />Wishlist</b></a></td>
-                            <td><a href="#"><FaChartLine /></a></td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td><a href="#"><FaStar /></a></td>
+                                <td className="add-wishlist"><a href="#"><b><FaPlus />Wishlist</b></a></td>
+                                <td><a href="#"><FaChartLine /></a></td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
