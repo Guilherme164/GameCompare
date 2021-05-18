@@ -19,7 +19,7 @@ function Home() {
   useEffect(() => {
     connect.get('',{params:{term}}).then((results) =>{
       setJogo(results.data);
-      setTotalPages(Math.ceil(results.data.length / 5));  
+      setTotalPages(Math.ceil(results.data.length / 8));  
     });    
   }, [term]);
   const handleClick = num => {

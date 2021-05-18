@@ -28,7 +28,7 @@ body{
   width: 264px;
   height: 352px;
   margin: 30px;
-  box-shadow: 20px 20px 50px rgba(0, 0, 0, .5);
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, .5);
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -89,7 +89,7 @@ body{
 }
 
 .main-deal table{
-  font-size: 1.3em;
+  font-size: 1.1em;
   margin-bottom: 10px;
 }
 
@@ -135,6 +135,8 @@ body{
   font-size: .5em;
   text-shadow: 1px 1px #000;
   background: seagreen;
+  box-shadow: 1px 1px #000;
+  border-radius: 5px;
 }
 
 .real{
@@ -171,7 +173,7 @@ body{
 
 .game-card-toolbar{
   position: absolute;
-  bottom: 8px;
+  bottom: 16px;
   left: 0;
   height: 50px;
   width: 100%;
@@ -189,19 +191,57 @@ body{
   color: #fff;
 }
 
+.no-deals{
+  font-size: 14px;
+  width: 85%;
+  height: 40px;
+  position: absolute;
+  bottom: 100px;
+}
+
+.card-info{
+  font-size: 14px;
+  width: 85%;
+  position: absolute;
+  top: 140px;
+  opacity: 1;
+  transition: .3s;
+}
+
+.game-card:hover .card-info{
+  opacity: 0;
+}
+
+.gratis{
+  color: gold;
+}
+
 .add-wishlist{
-  background-color: darkgreen;
-  border-radius: 5px;
+  color: #fff;
+  filter: drop-shadow(0px 0px 0px gold);
+  cursor: pointer;
 }
 
-.remove-wishlist{
-  background-color: darkred;
-  border-radius: 5px;
+.add-wishlist:hover, .remove-wishlist{
+  color: gold;
+  filter: drop-shadow(0px 0px 10px gold);
+  cursor: pointer;
 }
 
+.big-star{
+  color: gold;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  filter: drop-shadow(0px 0px 10px gold);
+}
 
-
-
-
-
-
+.big-star-background{
+  transform: rotate(45deg);
+  position: absolute;
+  top: -80px;
+  left: -30px;
+  background-color: rgba(0, 0, 0, .8);
+  width: 100px;
+  height: 200px;
+}
