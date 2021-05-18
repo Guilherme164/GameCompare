@@ -6,6 +6,8 @@ import { ReactComponent as Spinner } from '../../assets/img/spinner.svg';
 import VanillaTilt from 'vanilla-tilt';
 import fitty from 'fitty';
 
+import "./css-tooltip.css";
+
 function CardJogos({ jogo, page }) {
     const [onWishlist, setOnWishlist] = useState('no'); //no, loading, yes
     const cover = jogo.cover;
@@ -32,18 +34,32 @@ function CardJogos({ jogo, page }) {
     });
 
     function AddWishlist(props) {
-        return <AiOutlineStar className="add-wishlist" size={30} onClick={() => setOnWishlist('loading')} />
+        return (<span data-tooltip="Adicionar à Wishlist" style={{ fontSize: "14px" }}>
+            <AiOutlineStar className="add-wishlist" size={30} onClick={() => setOnWishlist('loading')} />
+        </span>)
     }
 
     function RemoveWishlist(props) {
-        return <AiFillStar className="remove-wishlist" size={30} onClick={() => setOnWishlist('no')} />
+        return (<span data-tooltip="Remover da Wishlist" style={{ fontSize: "14px" }}>
+            <AiFillStar className="remove-wishlist" size={30} onClick={() => setOnWishlist('no')} />
+        </span>)
     }
 
     function Preco(props) {
-        if (props.preco > 0)
-            return <span><span className="real">R$</span>{props.preco}</span>
-        else
-            return <span className="gratis">Grátis</span>
+        if (props.preco > 0) {
+            if (props.desconto > 0) {
+                return (<span >
+                    <span className="price-switch" data-tooltip="Preço anterior">
+                        <span className="old-price"><span className="real">R$</span>
+                            <span style={{ textDecoration: "line-through" }}>{props.precoAnterior}</span></span>
+                        <span className="new-price"><span className="real">R$</span>{props.preco}</span>
+                    </span>
+
+                </span>)
+            }
+            else return <span><span className="real">R$</span>{props.preco}</span>
+        }
+        else return <span className="gratis">Grátis</span>
     }
 
     function Desconto(props) {
@@ -76,7 +92,8 @@ function CardJogos({ jogo, page }) {
                         <tbody>
                             <tr>
                                 <td className="td-left">{lojas[0].store_name}</td>
-                                <td className="td-right"><Preco preco={lojas[0].price_new} /></td>
+                                <td className="td-right"><Preco preco={lojas[0].price_new} desconto={lojas[0].price_cut}
+                                    precoAnterior={lojas[0].price_old} /></td>
                                 <Desconto desconto={lojas[0].price_cut} />
                             </tr>
                         </tbody>
@@ -89,7 +106,8 @@ function CardJogos({ jogo, page }) {
                                 {lojas.slice(1).map(function (lojas, i) {
                                     return <tr key={lojas.id_deal}>
                                         <td className="td-left">{lojas.store_name}</td>
-                                        <td className="td-right"><Preco preco={lojas.price_new} /></td>
+                                        <td className="td-right"><Preco preco={lojas.price_new} desconto={lojas.price_cut}
+                                            precoAnterior={lojas.price_old} /></td>
                                         <Desconto desconto={lojas.price_cut} />
                                     </tr>
                                 })}

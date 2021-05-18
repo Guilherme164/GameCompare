@@ -144,6 +144,28 @@ body{
   margin-right: 2px;
 }
 
+.price-switch{
+  position: relative;
+}
+
+.new-price{
+  opacity: 1;
+}
+
+.old-price{
+  position: absolute;
+  right: 0;
+  opacity: 0;
+}
+
+.price-switch:hover .new-price{
+  opacity: 0;
+}
+
+.price-switch:hover .old-price{
+  opacity: 1;
+}
+
 .fav-corner{
   width: 55px;
   height: 55px;
