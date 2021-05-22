@@ -5,11 +5,12 @@ import { FaChartLine } from 'react-icons/fa';
 import { ReactComponent as Spinner } from '../../assets/img/spinner.svg';
 import VanillaTilt from 'vanilla-tilt';
 import fitty from 'fitty';
+import axios from 'axios';
 
 import "./css-tooltip.css";
 
 function CardJogos({ jogo, page }) {
-    const [onWishlist, setOnWishlist] = useState('no'); //no, loading, yes
+    const [onWishlist, setOnWishlist] = useState(jogo.on_wishlist); //no, loading, yes
     const cover = jogo.cover;
     const lojas = jogo.deals;
 
@@ -35,14 +36,32 @@ function CardJogos({ jogo, page }) {
 
     function AddWishlist(props) {
         return (<span data-tooltip="Adicionar à Wishlist" style={{ fontSize: "14px" }}>
-            <AiOutlineStar className="add-wishlist" size={30} onClick={() => setOnWishlist('loading')} />
+            <AiOutlineStar className="add-wishlist" size={30} onClick={() => addToWishlist()} />
         </span>)
     }
 
     function RemoveWishlist(props) {
         return (<span data-tooltip="Remover da Wishlist" style={{ fontSize: "14px" }}>
-            <AiFillStar className="remove-wishlist" size={30} onClick={() => setOnWishlist('no')} />
+            <AiFillStar className="remove-wishlist" size={30} onClick={() => removeFromWishlist()} />
         </span>)
+    }
+
+    function addToWishlist() {
+        setOnWishlist("loading");
+        axios.post('https://game-oferta-api.herokuapp.com/wishlist_games', {
+            id_game: jogo.id,
+            username: 'fulano'
+        })
+            .then(res => { if (res.status === 201) setOnWishlist(true); })
+            .catch(e => { console.log(e); setOnWishlist(false) });
+    }
+
+    function removeFromWishlist() {
+        setOnWishlist("loading");
+        var params = '?id_game=' + jogo.id + '&username=fulano';
+        axios.delete('https://game-oferta-api.herokuapp.com/wishlist_games' + params)
+            .then(res => { if (res.status === 200) setOnWishlist(false); })
+            .catch(e => { console.log(e); setOnWishlist(true) });
     }
 
     function Preco(props) {
@@ -74,7 +93,7 @@ function CardJogos({ jogo, page }) {
             <div className="img-card">
                 <img src={cover}></img>
             </div>
-            {onWishlist === "yes" && (
+            {onWishlist === true && (
                 <Fragment>
                     <div className="big-star-background"></div>
                     <div><AiFillStar className="big-star" size={60} /></div>
@@ -124,11 +143,11 @@ function CardJogos({ jogo, page }) {
                         <tbody>
                             <tr>
                                 <td>
-                                    {onWishlist === "no" && (<AddWishlist />)}
                                     {onWishlist === "loading" && (
-                                        <Spinner onClick={() => setOnWishlist('yes')} />
+                                        <Spinner />
                                     )}
-                                    {onWishlist === "yes" && (<RemoveWishlist />)}
+                                    {onWishlist === false && (<AddWishlist />)}
+                                    {onWishlist === true && (<RemoveWishlist />)}
                                 </td>
                                 <td><a href="#"><FaChartLine size={25} /></a></td>
                             </tr>
