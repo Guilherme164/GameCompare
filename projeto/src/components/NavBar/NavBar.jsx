@@ -4,6 +4,7 @@ import {
     Link
 } from "react-router-dom";
 import ModalLogin from "../ModalLogin";
+import ModalCadastroLogin from "../ModalCadastroLogin";
 import { Nav, Form, Navbar } from "react-bootstrap";
 
 
@@ -17,7 +18,8 @@ function NavBar() {
                     <Link className="nav-link"to="/WishList">Home2</Link>                    
                 </Nav>
                 <Form inline>
-                    <ModalLogin />
+                    <ModalCadastroLogin/>
+                    <ModalLogin />                    
                 </Form>
             </Navbar>
         </header>
