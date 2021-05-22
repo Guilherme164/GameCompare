@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
-import Buscador from "../components/Buscador";
-import ListaJogos from "../components/ListaJogos/ListaJogos";
-import Paginacao from "../components/Paginacao";
-import { connect} from '../connect';
+import Buscador from "../../components/Buscador";
+import ListaJogos from "../../components/ListaJogos/ListaJogos";
+import Paginacao from "../../components/Paginacao";
+import { connect} from '../../connect';
 
 import "./style.css";
 
@@ -25,12 +25,13 @@ function Home() {
   const handleClick = num => {
     setPage(num);
   }
+  console.log(jogo);
   if (jogo.length > 0) {
     
     return (
-      <div className="container-game">
+      <div className="content">
           <Buscador buscar={coletarDados}/>
-          <div className="lista"><ListaJogos jogo={jogo} pagina={page} /></div>
+          <div className="lista"><ListaJogos jogo={jogo} pagina={page} /></div>        
           <div className="paginacao"><Paginacao totalPages={totalPages} handleClick={handleClick} /></div>
       </div>);
   } else {

@@ -1,15 +1,30 @@
 import './assets/App.css';
 import NavBar from "./components/NavBar";
 import React from 'react';
-import Home from '../src/Pages/Home';
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,    
+} from "react-router-dom";
+import Home from './Pages/Home/Home';
+import WishList from './Pages/WishList';
 function App() 
 {
   return(
-   <main>
-   <NavBar></NavBar>   
-   <Home></Home>
-   </main >
+    <main>
+   <Router>         
+    <NavBar>
+    </NavBar>   
+    <Switch>
+                <Route path="/WishList">
+                    <WishList/>
+                </Route>
+                <Route path="/">
+                    <Home />
+                </Route>                
+            </Switch>               
+    </Router>
+    </main >   
   );
   
 }

@@ -4,10 +4,9 @@ import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import { FaChartLine } from 'react-icons/fa';
 import { ReactComponent as Spinner } from '../../assets/img/spinner.svg';
 import VanillaTilt from 'vanilla-tilt';
-import fitty from 'fitty';
-import axios from 'axios';
+import fitty from 'fitty';import axios from 'axios';
 
-import "./css-tooltip.css";
+
 
 function CardJogos({ jogo, page }) {
     const [onWishlist, setOnWishlist] = useState(jogo.on_wishlist); //no, loading, yes
@@ -63,7 +62,6 @@ function CardJogos({ jogo, page }) {
             .then(res => { if (res.status === 200) setOnWishlist(false); })
             .catch(e => { console.log(e); setOnWishlist(true) });
     }
-
     function Preco(props) {
         if (props.preco > 0) {
             if (props.desconto > 0) {
@@ -91,7 +89,7 @@ function CardJogos({ jogo, page }) {
     return (
         <div className="game-card">
             <div className="img-card">
-                <img src={cover}></img>
+                <img  alt={jogo.name[0]} src={cover}></img>
             </div>
             {onWishlist === true && (
                 <Fragment>
@@ -149,7 +147,7 @@ function CardJogos({ jogo, page }) {
                                     {onWishlist === false && (<AddWishlist />)}
                                     {onWishlist === true && (<RemoveWishlist />)}
                                 </td>
-                                <td><a href="#"><FaChartLine size={25} /></a></td>
+                                <td><a href="/#"><FaChartLine size={25} /></a></td>
                             </tr>
                         </tbody>
                     </table>

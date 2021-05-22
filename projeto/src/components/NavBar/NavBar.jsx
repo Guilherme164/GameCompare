@@ -1,17 +1,27 @@
 import React from "react";
 import "./style.css";
+import {
+    Link
+} from "react-router-dom";
+import ModalLogin from "../ModalLogin";
+import { Nav, Form, Navbar } from "react-bootstrap";
+
 
 function NavBar() {
-
     return (
+        <header>
+            <Navbar className="topnav" variant="dark">                
+                <Nav className="mr-auto">
+                    <Link className="nav-link" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></Link>
+                    <Link className="nav-link"to="/">Home</Link>
+                    <Link className="nav-link"to="/WishList">Home2</Link>                    
+                </Nav>
+                <Form inline>
+                    <ModalLogin />
+                </Form>
+            </Navbar>
+        </header>
 
-        <div className="topnav" id="myTopnav">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-            <a href="#home" className="active">Home</a>
-            <a href="#news">M</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
-        </div>
     );
 
 }
