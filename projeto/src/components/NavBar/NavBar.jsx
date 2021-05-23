@@ -15,7 +15,7 @@ function NavBar() {
                 <Nav className="mr-auto">
                     <Link className="nav-link" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></Link>
                     <Link className="nav-link"to="/">Home</Link>
-                    <Link className="nav-link"to="/WishList">Home2</Link>                    
+                    <Link className="nav-link"to="/WishList">Lista de desejos</Link>                    
                 </Nav>
                 <Form inline>
                     <ModalCadastroLogin/>

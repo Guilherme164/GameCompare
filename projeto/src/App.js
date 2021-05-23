@@ -4,29 +4,32 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,    
+  Route,
 } from "react-router-dom";
 import Home from './Pages/Home/Home';
 import WishList from './Pages/WishList';
-function App() 
-{
-  return(
+import Page404 from './Pages/Page404';
+function App() {
+  return (
     <main>
-   <Router>         
-    <NavBar>
-    </NavBar>   
-    <Switch>
-                <Route path="/WishList">
-                    <WishList/>
-                </Route>
-                <Route path="/">
-                    <Home />
-                </Route>                
-            </Switch>               
-    </Router>
-    </main >   
+      <Router>
+        <NavBar>
+        </NavBar>
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route path="/WishList">
+            <WishList />
+          </Route>
+          <Route>
+            <Page404 />
+          </Route>
+        </Switch>
+      </Router>
+    </main >
   );
-  
+
 }
 
 export default App;
