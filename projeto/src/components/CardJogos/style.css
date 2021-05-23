@@ -49,7 +49,7 @@ body{
 }
 
 .game-card:hover .game-card-content{
-  transform: translateY(12px);
+  transform: translateY(0px);
 }
 
 .game-card-header{
@@ -188,14 +188,17 @@ body{
   opacity: 0;
 }
 
-.game-card hr{
+.game-card-hr{
+  background-color: #fff;
+  width: 100%;
+  height: 2px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .game-card-toolbar{
   position: absolute;
-  bottom: 16px;
+  bottom: -5px;
   left: 0;
   height: 50px;
   width: 100%;
@@ -207,9 +210,8 @@ body{
 }
 
 .toolbar-table{
-  width: 100%;
-  padding-left: 25px;
-  padding-right: 25px;
+  width: 40%;
+  margin: auto;
   color: #fff;
 }
 
@@ -225,7 +227,7 @@ body{
   font-size: 14px;
   width: 85%;
   position: absolute;
-  top: 140px;
+  top: 130px;
   opacity: 1;
   transition: .3s;
 }

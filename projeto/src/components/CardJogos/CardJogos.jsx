@@ -4,7 +4,7 @@ import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import { FaChartLine } from 'react-icons/fa';
 import { ReactComponent as Spinner } from '../../assets/img/spinner.svg';
 import VanillaTilt from 'vanilla-tilt';
-import fitty from 'fitty';import axios from 'axios';
+import fitty from 'fitty'; import axios from 'axios';
 
 
 
@@ -89,7 +89,7 @@ function CardJogos({ jogo, page }) {
     return (
         <div className="game-card">
             <div className="img-card">
-                <img  alt={jogo.name[0]} src={cover}></img>
+                <img alt={jogo.name[0]} src={cover}></img>
             </div>
             {onWishlist === true && (
                 <Fragment>
@@ -103,7 +103,7 @@ function CardJogos({ jogo, page }) {
                         {jogo.name}
                     </div>
                 </div>
-                <hr></hr>
+                <div className="game-card-hr"></div>
                 <div className="main-deal">
                     <table className="game-card-table">
                         <tbody>
@@ -140,14 +140,18 @@ function CardJogos({ jogo, page }) {
                     <table className="toolbar-table">
                         <tbody>
                             <tr>
-                                <td>
+                                <td style={{ float: "left" }}>
                                     {onWishlist === "loading" && (
                                         <Spinner />
                                     )}
                                     {onWishlist === false && (<AddWishlist />)}
                                     {onWishlist === true && (<RemoveWishlist />)}
                                 </td>
-                                <td><a href="/#"><FaChartLine size={25} /></a></td>
+                                <td style={{ float: "right" }}>
+                                    <span data-tooltip="Histórico de Preços" style={{ fontSize: "14px" }}>
+                                        <a href="/#"><FaChartLine size={25} /></a>
+                                    </span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
