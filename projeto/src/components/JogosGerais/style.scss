@@ -1,0 +1,24 @@
+.paginacao {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+/* .lista {
+	margin-top: 1rem;
+} */
+.lista{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 1900px;
+	flex-wrap: wrap;
+	z-index: 1;	
+  }
+  .content{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }  

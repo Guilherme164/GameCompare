@@ -8,7 +8,6 @@ function ModalLogin() {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
     return (
         <div className="mod">
             <Button className="btn"variant="dark" onClick={handleShow}>
