@@ -8,11 +8,10 @@ import fitty from 'fitty'; import axios from 'axios';
 
 
 
-function CardJogos({ jogo, page, log }) {
+function CardJogos({ jogo, page, usuario }) {
     const [onWishlist, setOnWishlist] = useState(jogo.on_wishlist); //no, loading, yes
     const cover = jogo.cover;
     const lojas = jogo.deals;
-    var username = log.username;
 
     if (lojas.length > 1) { //se houverem lojas vendendo o jogo
         lojas.sort(function (a, b) { //ordena por preço ASC
@@ -34,6 +33,10 @@ function CardJogos({ jogo, page, log }) {
         });
     });
 
+    useEffect((()=> {
+        setOnWishlist(jogo.on_wishlist);
+      }),[jogo]);
+
     function AddWishlist(props) {
         return (<span data-tooltip="Adicionar à Wishlist" style={{ fontSize: "14px" }}>
             <AiOutlineStar className="add-wishlist" size={30} onClick={() => addToWishlist()} />
@@ -50,7 +53,7 @@ function CardJogos({ jogo, page, log }) {
         setOnWishlist("loading");
         axios.post('https://game-oferta-api.herokuapp.com/wishlist_games', {
             id_game: jogo.id,
-            username: username
+            username: usuario.username
         })
             .then(res => { if (res.status === 201) setOnWishlist(true); })
             .catch(e => { console.log(e); setOnWishlist(false) });
@@ -58,7 +61,7 @@ function CardJogos({ jogo, page, log }) {
 
     function removeFromWishlist() {
         setOnWishlist("loading");
-        var params = '?id_game=' + jogo.id + '&username='+{username};
+        var params = '?id_game=' + jogo.id + '&username=' + usuario.username;
         axios.delete('https://game-oferta-api.herokuapp.com/wishlist_games' + params)
             .then(res => { if (res.status === 200) setOnWishlist(false); })
             .catch(e => { console.log(e); setOnWishlist(true) });
@@ -96,6 +99,12 @@ function CardJogos({ jogo, page, log }) {
                 <Fragment>
                     <div className="big-star-background"></div>
                     <div><AiFillStar className="big-star" size={60} /></div>
+                </Fragment>
+            )}
+            {onWishlist === "loading" && (
+                <Fragment>
+                    <div className="big-star-background"></div>
+                    <Spinner style={{position:"absolute", top: "15px", left: "15px"}}/>
                 </Fragment>
             )}
             <div className="game-card-content">

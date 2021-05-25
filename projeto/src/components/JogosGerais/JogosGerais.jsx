@@ -6,7 +6,7 @@ import { connect, connectWish } from '../../connect';
 
 import "./style.scss";
 
-function JogosGerais({ rota, log }) {
+function JogosGerais({ rota, usuario }) {
 
   const [page, setPage] = useState(1);
   const [pesquisa, setPesquisa] = useState([]);
@@ -16,9 +16,6 @@ function JogosGerais({ rota, log }) {
 
   var term = pesquisa.pesquisa;
   
-  console.log(log);
-  var username = log.username;
-
   // useEffect(() => {
   //   if(rota === "home"){connect.get('', { params: { term } }).then((results) => {
   //     setJogo(results.data);
@@ -31,6 +28,7 @@ function JogosGerais({ rota, log }) {
   //   }
   // }, [rota,term]);
   useEffect(() => {
+    var username = usuario.username;
       if(rota === "home"){connect.get('', { params: { username,term } }).then((results) => {
         setJogo(results.data);
         setTotalPages(Math.ceil(results.data.length / 8));
@@ -40,13 +38,13 @@ function JogosGerais({ rota, log }) {
           setTotalPages(Math.ceil(results.data.length / 8));
         });
       }
-    }, [rota,username,term]);
+    }, [rota,usuario,term]);
 
 
   const handleClick = num => {
     setPage(num);
   }
-  
+
   
 
   // console.log(jogo);
@@ -55,7 +53,7 @@ function JogosGerais({ rota, log }) {
     return (
       <div className="content">
         <Buscador buscar={coletarDados} />
-        <div className="lista"><ListaJogos log={log} jogo={jogo} pagina={page} /></div>
+        <div className="lista"><ListaJogos usuario={usuario} jogo={jogo} pagina={page} /></div>
         {/* <div className="paginacao"><Paginacao totalPages={totalPages} handleClick={handleClick} /></div> */}
       </div>);
   } else {

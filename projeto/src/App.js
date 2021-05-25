@@ -12,31 +12,24 @@ import Page404 from './Pages/Page404';
 import { connectUser } from './connect';
 
 function App() {
-  const [usuario, setUsuario] = useState([]);
-  const [senha, setSenha] = useState([]);
-  const [log, setLog] = useState([]);
+  const [usuario, setUsuario] = useState({username:'',email:''});
 
-  function login(){
-    if(usuario.length > 0 && senha.length > 0) {
-      connectUser.post('', { email: usuario, password: senha })
-        .then((results) => {
-          setLog(results.data);
-          console.log('oi')        
-        });
-    }
-  }  
+  function setUser(username, email) {
+    setUsuario({ username: username, email: email });
+  }
+
   return (
     <main>
       <Router>
-        <NavBar busca={busca}>
+        <NavBar setUser={setUser}>
         </NavBar>
-       
+
         <Switch>
           <Route exact path='/'>
-            <Home  log={log}/>
+            <Home usuario={usuario} />
           </Route>
           <Route path="/WishList">
-            <WishList log={log}/>
+            <WishList usuario={usuario} />
           </Route>
           <Route>
             <Page404 />
@@ -45,12 +38,6 @@ function App() {
       </Router>
     </main >
   );
-  function busca(user, password) {
-    setUsuario(user);
-    setSenha(password);
-    login();
-  }
-
 
 }
 

@@ -20,7 +20,7 @@ function NavBar(props) {
                 </Nav>
                 <Form inline>
                     <ModalCadastroLogin/>
-                    <ModalLogin busca={props.busca}/>                    
+                    <ModalLogin setUser={props.setUser}/>                    
                 </Form>
             </Navbar>
         </header>
