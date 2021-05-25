@@ -12,11 +12,20 @@ import Page404 from './Pages/Page404';
 import { connectUser } from './connect';
 
 function App() {
-  const [usuario, setUsuario] = useState({username:'',email:''});
+  const [usuario, setUsuario] = useState({ username: '', email: '' });
 
   function setUser(username, email) {
+    localStorage.setItem('username', username);
+    localStorage.setItem('email', email);
     setUsuario({ username: username, email: email });
   }
+
+  useEffect(() => {
+    const username = localStorage.getItem("username");
+    const email = localStorage.getItem("email");
+    if (username && email)
+      setUsuario({ username: username, email: email });
+  }, []);
 
   return (
     <main>

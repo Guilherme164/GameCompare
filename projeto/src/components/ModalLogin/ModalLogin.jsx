@@ -3,6 +3,7 @@ import axios from 'axios';
 import "./style.scss";
 import { Form, Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { connectUser } from '../../connect';
 
 function ModalLogin(props) {
     const [show, setShow] = useState(false);
@@ -13,7 +14,7 @@ function ModalLogin(props) {
     const [password, setPassword] = useState("");
 
     function login() {
-        axios.post('https://game-oferta-api.herokuapp.com/login',
+        connectUser.post('',
             { email: email, password: password })
             .then(res => {
                 alert('Login realizado com sucesso!');

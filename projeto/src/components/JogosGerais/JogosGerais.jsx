@@ -28,7 +28,7 @@ function JogosGerais({ rota, usuario }) {
   //   }
   // }, [rota,term]);
   useEffect(() => {
-    var username = usuario.username;
+    let username = usuario ? usuario.username : '';
       if(rota === "home"){connect.get('', { params: { username,term } }).then((results) => {
         setJogo(results.data);
         setTotalPages(Math.ceil(results.data.length / 8));
@@ -57,7 +57,7 @@ function JogosGerais({ rota, usuario }) {
         {/* <div className="paginacao"><Paginacao totalPages={totalPages} handleClick={handleClick} /></div> */}
       </div>);
   } else {
-    return (<Fragment><h1>Carregando</h1></Fragment>);
+    return (<h1>Carregando</h1>);
   }
 
   function coletarDados(dados) {

@@ -4,7 +4,7 @@ import JogosGerais from "../../components/JogosGerais";
 
 function WishList(props) {
   return(
-    <JogosGerais log={props.log} rota="wishlist"/>
+    <JogosGerais usuario={props.usuario} rota="wishlist"/>
   );
 }
 export default WishList;
