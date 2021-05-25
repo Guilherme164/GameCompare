@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import {
     Link
@@ -8,7 +8,8 @@ import ModalCadastroLogin from "../ModalCadastroLogin";
 import { Nav, Form, Navbar } from "react-bootstrap";
 
 
-function NavBar() {
+function NavBar(props) {
+    
     return (
         <header>
             <Navbar className="topnav" variant="dark">                
@@ -19,7 +20,7 @@ function NavBar() {
                 </Nav>
                 <Form inline>
                     <ModalCadastroLogin/>
-                    <ModalLogin />                    
+                    <ModalLogin busca={props.busca}/>                    
                 </Form>
             </Navbar>
         </header>

@@ -3,11 +3,24 @@ import "./style.scss";
 import { Form, Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function ModalLogin() {
+function ModalLogin(props) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    
+    const buscarInput = () =>{
+        props.busca(email, password);
+        
+       
+    }
+
+    function validateForm() {
+        return email.length > 0 && password.length > 0;
+      }
+   
     return (
         <div className="mod">
             <Button className="btn"variant="dark" onClick={handleShow}>
@@ -20,17 +33,22 @@ function ModalLogin() {
                         <Modal.Title>Login</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form className="formulario">
+                        <Form className="formulario" 
+                        onSubmit={(event) => {
+                            event.preventDefault();
+                            buscarInput(email, password);
+                        }}>                       
+                        
                             <Form.Group controlId="formGroupEmail">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" />
+                                <Form.Control  autoFocus value={email} type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" />
                             </Form.Group>
                             <Form.Group controlId="formGroupPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Control  autoFocus type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
                             </Form.Group>
                             <Form.Group>
-                                <Button>Entrar</Button>
+                                <Button disabled={!validateForm()} onClick={buscarInput}>Entrar</Button>
                             </Form.Group>
                         </Form>
                     </Modal.Body>

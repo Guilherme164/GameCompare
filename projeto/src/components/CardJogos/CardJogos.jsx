@@ -8,10 +8,11 @@ import fitty from 'fitty'; import axios from 'axios';
 
 
 
-function CardJogos({ jogo, page }) {
+function CardJogos({ jogo, page, log }) {
     const [onWishlist, setOnWishlist] = useState(jogo.on_wishlist); //no, loading, yes
     const cover = jogo.cover;
     const lojas = jogo.deals;
+    var username = log.username;
 
     if (lojas.length > 1) { //se houverem lojas vendendo o jogo
         lojas.sort(function (a, b) { //ordena por preço ASC
@@ -49,7 +50,7 @@ function CardJogos({ jogo, page }) {
         setOnWishlist("loading");
         axios.post('https://game-oferta-api.herokuapp.com/wishlist_games', {
             id_game: jogo.id,
-            username: 'fulano'
+            username: username
         })
             .then(res => { if (res.status === 201) setOnWishlist(true); })
             .catch(e => { console.log(e); setOnWishlist(false) });
@@ -57,7 +58,7 @@ function CardJogos({ jogo, page }) {
 
     function removeFromWishlist() {
         setOnWishlist("loading");
-        var params = '?id_game=' + jogo.id + '&username=fulano';
+        var params = '?id_game=' + jogo.id + '&username='+{username};
         axios.delete('https://game-oferta-api.herokuapp.com/wishlist_games' + params)
             .then(res => { if (res.status === 200) setOnWishlist(false); })
             .catch(e => { console.log(e); setOnWishlist(true) });
