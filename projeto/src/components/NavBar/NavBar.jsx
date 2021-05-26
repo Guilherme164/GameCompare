@@ -12,11 +12,11 @@ function NavBar(props) {
     
     return (
         <header>
-            <Navbar className="topnav" variant="dark">                
+            <Navbar className="topnav">                
                 <Nav className="mr-auto">
-                    <Link className="nav-link" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></Link>
-                    <Link className="nav-link"to="/">Home</Link>
-                    <Link className="nav-link"to="/WishList">Lista de desejos</Link>                    
+                    {/* <Link className="linknavnav-link " rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></Link> */}
+                    <Link className="linknav "to="/">Home</Link>
+                    <Link className="linknav"to="/WishList">Lista de desejos</Link>                    
                 </Nav>
                 <Form inline>
                     <ModalCadastroLogin/>

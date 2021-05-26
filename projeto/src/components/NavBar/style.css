@@ -1,32 +1,10 @@
- /* Add a black background color to the top navigation */
  .topnav {
-  background-color: #333;
+ color: #333;
   overflow: hidden;    
   width: 100%;
   display: flex;
+  background: linear-gradient(5deg,#9000EB, #4F02D6);
 }
-
-/* Style the links inside the navigation bar */
-.linknav {
-  /*float: left;       
-  display: inline-block;*/
-  display: inline-flex;
-  padding: 14px 16px;    
-  text-decoration: none;
-  color: #f2f2f2;
-  text-align: center;
-  font-size: 17px;    
-  list-style-type: none;
-}
-/* Change the color of links on hover */
-.linknav:hover {
-  background-color:  #4CAF50;
-  color: black;
-}   
-.linknav:active {
-background-color:  #af4c4c;
-color: black;
-}   
 
 .content{ 
   display: flex;
@@ -36,4 +14,28 @@ color: black;
 }  
 li {
 list-style-type: none;
+}
+.linknav{
+  color:white;
+  display: block;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  background-color: transparent;
+}
+.linknav::after{
+  box-sizing: border-box;
+}
+.linknav::before{
+  box-sizing: border-box;
+}
+.linknav:hover {
+  color:black;
+  display: block;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.nav-link {
+  color: white;
 }

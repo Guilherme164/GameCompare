@@ -28,7 +28,7 @@ function ModalLogin(props) {
 
     return (
         <div className="mod">
-            <Button className="btn" variant="dark" onClick={handleShow}>
+            <Button className="btn2" variant="light" onClick={handleShow}>
                 Login
             </Button>
 

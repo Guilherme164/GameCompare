@@ -11,7 +11,7 @@ function ModalCadastroLogin() {
 
     return (
         <div className="mod">
-            <Button className="btn"variant="dark" onClick={handleShow}>
+            <Button className="btn"variant="light" onClick={handleShow}>
                 Cadastrar
             </Button>
 
