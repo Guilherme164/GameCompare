@@ -9,3 +9,7 @@ export const connectWish = axios.create({
 export const connectUser = axios.create({         
      baseURL: 'https://game-oferta-api.herokuapp.com/login'
 });
+
+export const createUser = axios.create({
+     baseURL: 'https://game-oferta-api.herokuapp.com/user'
+});

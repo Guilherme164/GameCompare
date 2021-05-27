@@ -9,7 +9,6 @@ import {
 import Home from './Pages/Home/Home';
 import WishList from './Pages/WishList';
 import Page404 from './Pages/Page404';
-import { connectUser } from './connect';
 
 function App() {
   const [usuario, setUsuario] = useState({ username: '', email: '' });

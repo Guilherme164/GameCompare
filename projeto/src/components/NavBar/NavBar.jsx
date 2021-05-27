@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import {
     Link
@@ -19,7 +19,7 @@ function NavBar(props) {
                     <Link className="linknav"to="/WishList">Lista de desejos</Link>                    
                 </Nav>
                 <Form inline>
-                    <ModalCadastroLogin/>
+                    <ModalCadastroLogin setUser={props.setUser}/>
                     <ModalLogin setUser={props.setUser}/>                    
                 </Form>
             </Navbar>
