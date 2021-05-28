@@ -4,23 +4,26 @@ $white: #fff;
 $gray: #9b9b9b;
 
 .search{
+  width: 100%;
   display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
 }
 
-.form__group {
+.form-search {
   position: relative;
-  padding: 15px 0 0;
+  // padding: 15px 0 0;
   margin-top: 10px;
   display: flex;
 	align-items: center;
 	justify-content: center;	
-  width: 600px;	
+  width: 100%;	
+  flex-wrap: wrap;
+  
 }
 
-.form__field {
+.search-input {
   font-family: inherit;
   width: 100%;
   border: 0;
@@ -28,7 +31,7 @@ $gray: #9b9b9b;
   outline: 0;
   font-size: 1.3rem;
   color: $white;
-  padding: 7px 0;
+  padding: 15px 0 2px 0;
   background: transparent;
   transition: border-color 0.2s;
 
@@ -36,24 +39,25 @@ $gray: #9b9b9b;
     color: transparent;
   }
 
-  &:placeholder-shown ~ .form__label {
+  &:placeholder-shown ~ .search-label {
     font-size: 1.3rem;
     cursor: text;
-    top: 20px;
+    top: 10px;
   }
 }
 
-.form__label {
+.search-label {
   position: absolute;
   top: 0;
   display: block;
   transition: 0.2s;
   font-size: 1rem;
   color: $gray;
+  pointer-events: none;
 }
 
-.form__field:focus {
-  ~ .form__label {
+.search-input:focus {
+  ~ .search-label {
     position: absolute;
     top: 0;
     display: block;
@@ -62,28 +66,75 @@ $gray: #9b9b9b;
     color: $primary;
     font-weight:700;    
   }
-  padding-bottom: 6px;  
-  font-weight: 700;
+  // padding-bottom: 6px;  
+  // font-weight: 700;
   border-width: 3px;
   border-image: linear-gradient(to right, $primary,$secondary);
   border-image-slice: 1;
 }
+
 /* reset input */
-.form__field{
+.search-input{
   &:required,&:invalid { box-shadow:none; }
 }
 
-.search_btn {
+.search-btn {
   color: $primary;
+  position: absolute;
+  right: 4px;
+  top: 12px;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
-.form1{
+.search-field{
   display: flex;
-  width:50%;
+  position: relative;
+  width:100%;
 }
 
-.form2{
+.search-icon{
   display: flex;
   width:2px;
 }
 
+.store-filter{
+  width: 230px;
+  background-color: #11998e;
+  min-height: 50px;
+  display: inline-block;
+}
+
+.search-tools-item{
+  // background-color: #38ef7d;
+  width: 280px;
+  height: 60px;
+  margin: 10px;
+  display: block;
+  // background-color: red;
+}
+
+.filter-select{
+  padding-top: 15px;
+  width: 100%;
+  color: black;
+  float: right;
+}
+
+.filter-select button{
+  background-color: #111 !important;
+  color: #9b9b9b;
+  font-weight: 600;
+  // color: #11998e;
+  border-radius: 5px;
+}
+
+.filter-select > :nth-child(1) > :nth-child(2){
+  background-color: transparent !important;
+  margin-top: 0 !important;
+}
+
+.filter-select input{
+  display: none;
+}

@@ -72,13 +72,12 @@ function CardJogos({ jogo, page, usuario }) {
                 return (<span >
                     <span className="price-switch" data-tooltip="Preço anterior">
                         <span className="old-price"><span className="real">R$</span>
-                            <span style={{ textDecoration: "line-through" }}>{props.precoAnterior}</span></span>
-                        <span className="new-price"><span className="real">R$</span>{props.preco}</span>
+                            <span style={{ textDecoration: "line-through" }}>{props.precoAnterior.replace('.', ',')}</span></span>
+                        <span className="new-price"><span className="real">R$</span>{props.preco.replace('.', ',')}</span>
                     </span>
-
                 </span>)
             }
-            else return <span><span className="real">R$</span>{props.preco}</span>
+            else return <span><span className="real">R$</span>{props.preco.replace('.', ',')}</span>
         }
         else return <span className="gratis">Grátis</span>
     }
