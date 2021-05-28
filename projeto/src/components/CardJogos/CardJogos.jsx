@@ -8,7 +8,7 @@ import fitty from 'fitty'; import axios from 'axios';
 
 
 
-function CardJogos({ jogo, page, usuario }) {
+function CardJogos({ jogo, page, usuario, rota }) {
     const [onWishlist, setOnWishlist] = useState(jogo.on_wishlist); //no, loading, yes
     const cover = jogo.cover;
     const lojas = jogo.deals;
@@ -90,85 +90,89 @@ function CardJogos({ jogo, page, usuario }) {
     }
 
     return (
-        <div className="block-card">
-            <div className="game-card">
-                <div className="img-card">
-                    <img alt={jogo.name[0]} src={cover}></img>
-                </div>
-                {onWishlist === true && (
-                    <Fragment>
-                        <div className="big-star-background"></div>
-                        <div><AiFillStar className="big-star" size={60} /></div>
-                    </Fragment>
-                )}
-                {onWishlist === "loading" && (
-                    <Fragment>
-                        <div className="big-star-background"></div>
-                        <Spinner style={{ position: "absolute", top: "15px", left: "15px" }} />
-                    </Fragment>
-                )}
-                <div className="game-card-content">
-                    <div className="game-card-header">
-                        <div className="game-card-title" id={jogo.plain}>
-                            {jogo.name}
+        <Fragment>
+            {(rota !== "wishlist" || onWishlist) &&
+                <div className="block-card">
+                    <div className="game-card">
+                        <div className="img-card">
+                            <img alt={jogo.name[0]} src={cover}></img>
+                        </div>
+                        {onWishlist === true && (
+                            <Fragment>
+                                <div className="big-star-background"></div>
+                                <div><AiFillStar className="big-star" size={60} /></div>
+                            </Fragment>
+                        )}
+                        {onWishlist === "loading" && (
+                            <Fragment>
+                                <div className="big-star-background"></div>
+                                <Spinner style={{ position: "absolute", top: "15px", left: "15px" }} />
+                            </Fragment>
+                        )}
+                        <div className="game-card-content">
+                            <div className="game-card-header">
+                                <div className="game-card-title" id={jogo.plain}>
+                                    {jogo.name}
+                                </div>
+                            </div>
+                            <div className="game-card-hr"></div>
+                            <div className="main-deal">
+                                <table className="game-card-table">
+                                    <tbody>
+                                        <tr>
+                                            <td className="td-left">{lojas[0].store_name}</td>
+                                            <td className="td-right"><Preco preco={lojas[0].price_new} desconto={lojas[0].price_cut}
+                                                precoAnterior={lojas[0].price_old} /></td>
+                                            <Desconto desconto={lojas[0].price_cut} />
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="other-deals">
+                                {lojas.length > 1 &&
+                                    <table className="game-card-table">
+                                        <tbody>
+                                            {lojas.slice(1).map(function (lojas, i) {
+                                                return <tr key={lojas.id_deal}>
+                                                    <td className="td-left">{lojas.store_name}</td>
+                                                    <td className="td-right"><Preco preco={lojas.price_new} desconto={lojas.price_cut}
+                                                        precoAnterior={lojas.price_old} /></td>
+                                                    <Desconto desconto={lojas.price_cut} />
+                                                </tr>
+                                            })}
+                                        </tbody>
+                                    </table>
+                                }
+                                {lojas.length <= 1 &&
+                                    <div className="no-deals">Não foram encontrados outros preços para este jogo.</div>
+                                }
+                            </div>
+                            <div className="card-info">...</div>
+                            <div className="game-card-toolbar">
+                                <table className="toolbar-table">
+                                    <tbody>
+                                        <tr>
+                                            <td style={{ float: "left" }}>
+                                                {onWishlist === "loading" && (
+                                                    <Spinner />
+                                                )}
+                                                {onWishlist === false && (<AddWishlist />)}
+                                                {onWishlist === true && (<RemoveWishlist />)}
+                                            </td>
+                                            <td style={{ float: "right" }}>
+                                                <span data-tooltip="Histórico de Preços" style={{ fontSize: "14px" }}>
+                                                    <a href="/#"><FaChartLine size={25} /></a>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                    <div className="game-card-hr"></div>
-                    <div className="main-deal">
-                        <table className="game-card-table">
-                            <tbody>
-                                <tr>
-                                    <td className="td-left">{lojas[0].store_name}</td>
-                                    <td className="td-right"><Preco preco={lojas[0].price_new} desconto={lojas[0].price_cut}
-                                        precoAnterior={lojas[0].price_old} /></td>
-                                    <Desconto desconto={lojas[0].price_cut} />
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div className="other-deals">
-                        {lojas.length > 1 &&
-                            <table className="game-card-table">
-                                <tbody>
-                                    {lojas.slice(1).map(function (lojas, i) {
-                                        return <tr key={lojas.id_deal}>
-                                            <td className="td-left">{lojas.store_name}</td>
-                                            <td className="td-right"><Preco preco={lojas.price_new} desconto={lojas.price_cut}
-                                                precoAnterior={lojas.price_old} /></td>
-                                            <Desconto desconto={lojas.price_cut} />
-                                        </tr>
-                                    })}
-                                </tbody>
-                            </table>
-                        }
-                        {lojas.length <= 1 &&
-                            <div className="no-deals">Não foram encontrados outros preços para este jogo.</div>
-                        }
-                    </div>
-                    <div className="card-info">...</div>
-                    <div className="game-card-toolbar">
-                        <table className="toolbar-table">
-                            <tbody>
-                                <tr>
-                                    <td style={{ float: "left" }}>
-                                        {onWishlist === "loading" && (
-                                            <Spinner />
-                                        )}
-                                        {onWishlist === false && (<AddWishlist />)}
-                                        {onWishlist === true && (<RemoveWishlist />)}
-                                    </td>
-                                    <td style={{ float: "right" }}>
-                                        <span data-tooltip="Histórico de Preços" style={{ fontSize: "14px" }}>
-                                            <a href="/#"><FaChartLine size={25} /></a>
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
-            </div>
-        </div>
+            }
+        </Fragment>
     );
 }
 export default CardJogos;

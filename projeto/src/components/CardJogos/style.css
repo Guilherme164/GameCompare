@@ -378,14 +378,15 @@ body{
 .block-card:before, .block-card:after {
   content: '';
   position: absolute;
-  left: -2px;
+  left: -2x;
   top: -2px;  
-  background: linear-gradient(5deg,#b700ff, #002fff,#00ffff, #00ff55,#7bff00);  
+  /* background: linear-gradient(45deg,#b700ff, #002fff,#00ffff, #00ff55,#7bff00);   */
+  background: linear-gradient(45deg,#b700ff, #002fff,#00ffff,#7bff00,#00ff55, #00ffff, #002fff, #b700ff);  
   background-size: 400%;
   width: calc(100% + 4px);
   height: calc(100% + 4px);
   z-index: -20;
-  animation: steam 20s linear infinite;
+  animation: steam 10s ease-in-out infinite;
   border-radius: 10px;
 }
 
@@ -394,7 +395,7 @@ body{
     background-position: 0 0;
   }
   50% {
-    background-position: 400% 0;
+    background-position: 100% 0;
   }
   100% {
     background-position: 0 0;

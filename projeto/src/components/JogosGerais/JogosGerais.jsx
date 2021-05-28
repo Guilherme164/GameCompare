@@ -75,7 +75,7 @@ function JogosGerais({ rota, usuario }) {
     <div className="content">
       <Buscador buscar={coletarDados} />
       {loading ? (<Pacman className="centered" />) :
-        (jogo.length > 0 ? (<div className="lista"><ListaJogos usuario={usuario} jogo={jogo} pagina={page} /></div>
+        (jogo.length > 0 ? (<div className="lista"><ListaJogos usuario={usuario} jogo={jogo} pagina={page} rota={rota} /></div>
           /* <div className="paginacao"><Paginacao totalPages={totalPages} handleClick={handleClick} /></div> */
         ) : (<h1 className="centered">Nenhum jogo encontrado.</h1>))}
     </div>);
