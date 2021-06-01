@@ -35,6 +35,7 @@ function CardJogos({ jogo, page, usuario, rota }) {
 
     useEffect((() => {
         setOnWishlist(jogo.on_wishlist);
+
     }), [jogo]);
 
     function AddWishlist(props) {
@@ -66,19 +67,21 @@ function CardJogos({ jogo, page, usuario, rota }) {
             .then(res => { if (res.status === 200) setOnWishlist(false); })
             .catch(e => { console.log(e); setOnWishlist(true) });
     }
+
     function Preco(props) {
-        if (props.preco > 0) {
-            if (props.desconto > 0) {
-                return (<span >
-                    <span className="price-switch" data-tooltip="Preço anterior">
-                        <span className="old-price"><span className="real">R$</span>
-                            <span style={{ textDecoration: "line-through" }}>{props.precoAnterior.replace('.', ',')}</span></span>
-                        <span className="new-price"><span className="real">R$</span>{props.preco.replace('.', ',')}</span>
+        if (props.desconto > 0) {
+            return (<span >
+                <span className="price-switch" data-tooltip="Preço anterior">
+                    <span className="old-price"><span className="real">R$</span>
+                        <span style={{ textDecoration: "line-through" }}>{props.precoAnterior.replace('.', ',')}</span></span>
+                    <span className="new-price">
+                        {props.preco > 0 && (<Fragment><span className="real">R$</span>{props.preco.replace('.', ',')}</Fragment>)}
+                        {props.preco == 0 && (<span className="gratis">Grátis</span>)}
                     </span>
-                </span>)
-            }
-            else return <span><span className="real">R$</span>{props.preco.replace('.', ',')}</span>
+                </span>
+            </span>)
         }
+        else if (props.preco > 0) return <span><span className="real">R$</span>{props.preco.replace('.', ',')}</span>
         else return <span className="gratis">Grátis</span>
     }
 
@@ -92,7 +95,8 @@ function CardJogos({ jogo, page, usuario, rota }) {
     return (
         <Fragment>
             {(rota !== "wishlist" || onWishlist) &&
-                <div className="block-card">
+                <div className={lojas[0].price_cut == 100 ? "block-card green-glow" :
+                    (onWishlist ? "block-card golden-glow" : "block-card normal-glow")}>
                     <div className="game-card">
                         <div className="img-card">
                             <img alt={jogo.name[0]} src={cover}></img>
