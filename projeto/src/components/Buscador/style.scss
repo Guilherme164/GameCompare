@@ -123,7 +123,7 @@ $gray: #9b9b9b;
 }
 
 .filter-select button{
-  background-color: #111 !important;
+  background-color: transparent !important;
   color: #9b9b9b;
   font-weight: 600;
   // color: #11998e;
@@ -138,3 +138,49 @@ $gray: #9b9b9b;
 .filter-select input{
   display: none;
 }
+
+.rangeslider{
+  background: #9b9b9b !important;
+  margin-bottom: 0 !important;
+  margin-top: 10px !important;
+}
+
+.slider-label{
+  font-size: .8em;
+  color: #9b9b9b;
+  text-align: center;
+  transform: translateY(15px);
+  opacity: 0%;
+  transition: .2s;
+  margin-top: 7px;
+}
+
+#discount-slider:hover .slider-label{
+  opacity: 100%;
+  transform: translateY(0px);
+}
+
+.rangeslider-horizontal{
+  height: 8px !important;
+}
+
+.rangeslider__fill{
+  background: linear-gradient(to right, #11998e, #38ef7d) !important;
+  height: 8px !important;
+}
+
+.slider *{
+  box-shadow: none !important;
+}
+
+.rangeslider__handle{
+  width: 20px !important;
+  height: 20px !important;
+  background: #111 !important;
+  border: 2px solid #11998e !important;
+}
+
+.rangeslider__handle:after{
+  display: none !important;
+}
+

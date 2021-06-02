@@ -3,9 +3,12 @@ import "./style.scss";
 import { FaSearch } from 'react-icons/fa';
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 
+import Horizontal from './Horizontal'
+
 export default function Buscador(props) {
     const [pesquisa, setPesquisa] = useState("");
     const [storeFilter, setStoreFilter] = useState(false);
+    const [discountFilter, setDiscountFilter] = useState(0);
     const options = [
         { value: 3, label: 'Amazon' },
         { value: 5, label: 'Blizzard' },
@@ -20,6 +23,10 @@ export default function Buscador(props) {
         { value: 42, label: 'Steam' },
         { value: 43, label: 'Uplay' }
     ];
+
+    function changeDiscountFilter(value) {
+        setDiscountFilter(value);
+    }
 
     function changeLabel(ref) {
         var label = ref.placeholderButtonLabel, value = ref.value;
@@ -70,8 +77,11 @@ export default function Buscador(props) {
         <div className="search-tools">
             <form className="form-search" onSubmit={(event) => {
                 event.preventDefault();
-                props.buscar(pesquisa, storeFilter);
+                props.buscar(pesquisa, storeFilter, discountFilter);
             }}>
+                <div className="search-tools-item" id="discount-slider" style={{ width: "150px" }}>
+                    <Horizontal setDiscountFilter={setDiscountFilter}></Horizontal>
+                </div>
                 <div className="search-tools-item" style={{ width: "150px" }}>
                     <div className="filter-select">
                         <ReactMultiSelectCheckboxes className="filter-dropdown" getDropdownButtonLabel={changeLabel} onChange={inputChange} hideSearch={true}
