@@ -1,13 +1,14 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useContext } from "react";
 import Buscador from "../Buscador";
 import ListaJogos from "../ListaJogos";
 import Paginacao from "../Paginacao";
 import { connect, connectWish } from '../../connect';
 import { ReactComponent as Pacman } from '../../assets/img/pacman.svg';
+import { LoginContext } from '../../contexts/LoginContext';
 
 import "./style.scss";
 
-function JogosGerais({ rota, usuario }) {
+function JogosGerais({ rota }) {
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [term, setTerm] = useState([]);
@@ -15,6 +16,8 @@ function JogosGerais({ rota, usuario }) {
   const [discountFilter, setDiscountFilter] = useState(0);
   const [jogo, setJogo] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
+
+  const {usuario} = useContext(LoginContext);
 
   function coletarDados(term, storeIDs, discountFilter) {
     setTerm(term);
@@ -90,7 +93,7 @@ function JogosGerais({ rota, usuario }) {
     <div className="content">
       <Buscador buscar={coletarDados} />
       {loading ? (<Pacman className="centered" />) :
-        (jogo.length > 0 ? (<div className="lista"><ListaJogos usuario={usuario} jogo={jogo} pagina={page} rota={rota} /></div>
+        (jogo.length > 0 ? (<div className="lista"><ListaJogos jogo={jogo} pagina={page} rota={rota} /></div>
           /* <div className="paginacao"><Paginacao totalPages={totalPages} handleClick={handleClick} /></div> */
         ) : (<h1 className="centered">Nenhum jogo encontrado.</h1>))}
     </div>);

@@ -1,17 +1,18 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, useContext, Fragment } from "react";
 import "./style.css";
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import { FaChartLine } from 'react-icons/fa';
 import { ReactComponent as Spinner } from '../../assets/img/spinner.svg';
 import VanillaTilt from 'vanilla-tilt';
 import fitty from 'fitty'; import axios from 'axios';
+import { LoginContext } from '../../contexts/LoginContext';
 
-
-
-function CardJogos({ jogo, page, usuario, rota }) {
+function CardJogos({ jogo, page, rota }) {
     const [onWishlist, setOnWishlist] = useState(jogo.on_wishlist); //no, loading, yes
     const cover = jogo.cover;
     const lojas = jogo.deals;
+
+    const { usuario, setLoginModal } = useContext(LoginContext);
 
     if (lojas.length > 1) { //se houverem lojas vendendo o jogo
         lojas.sort(function (a, b) { //ordena por preço ASC
@@ -35,16 +36,17 @@ function CardJogos({ jogo, page, usuario, rota }) {
 
     useEffect((() => {
         setOnWishlist(jogo.on_wishlist);
-
     }), [jogo]);
 
-    function AddWishlist(props) {
+    function AddWishlist() {
         return (<span data-tooltip="Adicionar à Wishlist" style={{ fontSize: "14px" }}>
-            <AiOutlineStar className="add-wishlist" size={30} onClick={() => addToWishlist()} />
+            {usuario.username !== '' ?
+                (<AiOutlineStar className="add-wishlist" size={30} onClick={() => addToWishlist()} />) :
+                (<AiOutlineStar className="add-wishlist" size={30} onClick={() => setLoginModal(true)} />)}
         </span>)
     }
 
-    function RemoveWishlist(props) {
+    function RemoveWishlist() {
         return (<span data-tooltip="Remover da Wishlist" style={{ fontSize: "14px" }}>
             <AiFillStar className="remove-wishlist" size={30} onClick={() => removeFromWishlist()} />
         </span>)
@@ -94,20 +96,20 @@ function CardJogos({ jogo, page, usuario, rota }) {
 
     return (
         <Fragment>
-            {(rota !== "wishlist" || onWishlist) &&
+            {(rota !== "wishlist" || (usuario.username !== '' && onWishlist)) &&
                 <div className={lojas[0].price_cut == 100 ? "block-card green-glow" :
-                    (onWishlist ? "block-card golden-glow" : "block-card normal-glow")}>
+                    ((usuario.username !== '' && onWishlist) ? "block-card golden-glow" : "block-card normal-glow")}>
                     <div className="game-card">
                         <div className="img-card">
                             <img alt={jogo.name[0]} src={cover}></img>
                         </div>
-                        {onWishlist === true && (
+                        {(usuario.username !== '' && onWishlist === true) && (
                             <Fragment>
                                 <div className="big-star-background"></div>
                                 <div><AiFillStar className="big-star" size={60} /></div>
                             </Fragment>
                         )}
-                        {onWishlist === "loading" && (
+                        {(usuario.username !== '' && onWishlist === "loading") && (
                             <Fragment>
                                 <div className="big-star-background"></div>
                                 <Spinner style={{ position: "absolute", top: "15px", left: "15px" }} />
@@ -157,11 +159,11 @@ function CardJogos({ jogo, page, usuario, rota }) {
                                     <tbody>
                                         <tr>
                                             <td style={{ float: "left" }}>
-                                                {onWishlist === "loading" && (
+                                                {(usuario.username !== '' && onWishlist) === "loading" && (
                                                     <Spinner />
                                                 )}
                                                 {onWishlist === false && (<AddWishlist />)}
-                                                {onWishlist === true && (<RemoveWishlist />)}
+                                                {(usuario.username !== '' && onWishlist) === true && (<RemoveWishlist />)}
                                             </td>
                                             <td style={{ float: "right" }}>
                                                 <span data-tooltip="Histórico de Preços" style={{ fontSize: "14px" }}>

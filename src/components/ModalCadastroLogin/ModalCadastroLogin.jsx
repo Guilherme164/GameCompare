@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./style.scss";
 import { Form, Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createUser } from '../../connect';
+import { LoginContext } from '../../contexts/LoginContext';
 
 function ModalCadastroLogin(props) {
     const [show, setShow] = useState(false);
@@ -13,19 +14,21 @@ function ModalCadastroLogin(props) {
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
 
-    function cadastrar(usename,email, password, password2) {
+    const { setUser } = useContext(LoginContext);
+
+    function cadastrar(usename, email, password, password2) {
         console.log(email + "     " + password + "   " + password2 + "   ")
         if (password === password2) {
             createUser.post('',
                 { username: username, email: email, password: password })
                 .then(res => {
                     alert('Cadastro realizado com sucesso!');
-                    props.setUser(username, email);
+                    setUser(res.data.username, res.data.email);
                     handleClose();
                 }).catch(e => {
-                    alert("ops, parece que algo deu errado!");              
+                    alert("ops, parece que algo deu errado!");
                 });
-        } else if(password !== password2){
+        } else if (password !== password2) {
             alert("as senhas não conferem, tente preencher novamente");
             setPassword("");
             setPassword("");

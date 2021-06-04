@@ -9,9 +9,11 @@ import {
 import Home from './Pages/Home/Home';
 import WishList from './Pages/WishList';
 import Page404 from './Pages/Page404';
+import { LoginContext } from './contexts/LoginContext';
 
 function App() {
   const [usuario, setUsuario] = useState({ username: '', email: '' });
+  const [loginModal, setLoginModal] = useState(false);
 
   function setUser(username, email) {
     localStorage.setItem('username', username);
@@ -28,25 +30,25 @@ function App() {
 
   return (
     <main>
-      <Router>
-        <NavBar setUser={setUser}>
-        </NavBar>
-
-        <Switch>
-          <Route exact path='/'>
-            <Home usuario={usuario} />
-          </Route>
-          <Route path="/WishList">
-            <WishList usuario={usuario} />
-          </Route>
-          <Route>
-            <Page404 />
-          </Route>
-        </Switch>
-      </Router>
+      <LoginContext.Provider value={{usuario, setUser, loginModal, setLoginModal}}>
+        <Router>
+          <NavBar>
+          </NavBar>
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route path="/WishList">
+              <WishList />
+            </Route>
+            <Route>
+              <Page404 />
+            </Route>
+          </Switch>
+        </Router>
+      </LoginContext.Provider>
     </main >
   );
-
 }
 
 export default App;

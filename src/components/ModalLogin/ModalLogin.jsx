@@ -1,22 +1,19 @@
-import React, { useState } from "react";
-// import axios from 'axios';
+import React, { useState, useContext } from "react";
 import "./style.scss";
 import { Form, Button, Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { connectUser } from '../../connect';
-// import { ReactComponent as Spinner } from '../../assets/img/spinner_login.svg';
 import { ReactComponent as Spinner } from '../../assets/img/spinner_btn.svg';
+import { LoginContext } from '../../contexts/LoginContext';
 
 
-function ModalLogin(props) {
-    const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+function ModalLogin() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("")
+
+    const { setUser, loginModal, setLoginModal } = useContext(LoginContext);
 
     function login() {
         setError("");
@@ -25,22 +22,22 @@ function ModalLogin(props) {
             { email: email, password: password })
             .then(res => {
                 alert('Login realizado com sucesso!');
-                props.setUser(res.data.username, res.data.email);
-                handleClose();
+                setUser(res.data.username, res.data.email);
+                setLoginModal(false);
                 setLoading(false);
             }).catch(e => {
-                if (e.response.status === 400) setError('Usuário ou senha não informado(s)!');
-                else if (e.response.status === 401) setError('Usuário ou senha inválido(s)!')
+                if (e.response !== undefined) {
+                    if (e.response.status === 400) setError('Usuário ou senha não informado(s)!');
+                    else if (e.response.status === 401) setError('Usuário ou senha inválido(s)!')
+                } else {
+                    console.log(e);
+                }
                 setLoading(false);
             });
     }
 
     return (
-        <div className="mod">
-            <Button className="btn2" variant="light" onClick={handleShow}>
-                Login
-            </Button>
-            <Modal styles={{ overlay: { background: 'black' } }} className="modal_fundo" show={show} onHide={handleClose} >
+            <Modal styles={{ overlay: { background: 'black' } }} className="modal_fundo" show={loginModal} onHide={() => setLoginModal(false)} >
                 <div className="modal_body">
                     <Modal.Header closeButton>
                         <Modal.Title>Login</Modal.Title>
@@ -69,7 +66,6 @@ function ModalLogin(props) {
                     </Modal.Body>
                 </div>
             </Modal>
-        </div>
     );
 
 }

@@ -2,9 +2,9 @@ import React from "react";
 import "./style.css";
 import JogosGerais from "../../components/JogosGerais";
 
-function WishList(props) {
+function WishList() {
   return(
-    <JogosGerais usuario={props.usuario} rota="wishlist"/>
+    <JogosGerais rota="wishlist"/>
   );
 }
 export default WishList;
