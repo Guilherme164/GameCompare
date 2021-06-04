@@ -21,6 +21,11 @@ function App() {
     setUsuario({ username: username, email: email });
   }
 
+  function unsetUser() {
+    localStorage.clear();
+    setUsuario({ username: '', email: '' });
+  }
+
   useEffect(() => {
     const username = localStorage.getItem("username");
     const email = localStorage.getItem("email");
@@ -30,7 +35,7 @@ function App() {
 
   return (
     <main>
-      <LoginContext.Provider value={{usuario, setUser, loginModal, setLoginModal}}>
+      <LoginContext.Provider value={{ usuario, setUser, unsetUser, loginModal, setLoginModal }}>
         <Router>
           <NavBar>
           </NavBar>

@@ -8,7 +8,7 @@ import { LoginContext } from '../../contexts/LoginContext';
 
 function NavBar() {
 
-    const { usuario, setLoginModal } = useContext(LoginContext);
+    const { usuario, unsetUser, setLoginModal } = useContext(LoginContext);
 
     return (
         <header>
@@ -31,7 +31,7 @@ function NavBar() {
                             </div>
                         </Fragment>) :
                         (<div>
-                            <Button className="login-btn" variant="light">
+                            <Button className="login-btn" variant="light" onClick={() => unsetUser()}>
                                 Sair
                             </Button>
                             <ModalLogin />
@@ -39,7 +39,6 @@ function NavBar() {
                 </Form>
             </Navbar>
         </header>
-
     );
 
 }

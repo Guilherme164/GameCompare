@@ -17,7 +17,7 @@ function JogosGerais({ rota }) {
   const [jogo, setJogo] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
 
-  const {usuario} = useContext(LoginContext);
+  const { usuario } = useContext(LoginContext);
 
   function coletarDados(term, storeIDs, discountFilter) {
     setTerm(term);
@@ -92,10 +92,12 @@ function JogosGerais({ rota }) {
   return (
     <div className="content">
       <Buscador buscar={coletarDados} />
-      {loading ? (<Pacman className="centered" />) :
-        (jogo.length > 0 ? (<div className="lista"><ListaJogos jogo={jogo} pagina={page} rota={rota} /></div>
-          /* <div className="paginacao"><Paginacao totalPages={totalPages} handleClick={handleClick} /></div> */
-        ) : (<h1 className="centered">Nenhum jogo encontrado.</h1>))}
+      {(rota === 'wishlist' && usuario.username === '') ?
+        (<h1 className="centered">Faça login para ver a sua Wishlist.</h1>) :
+        (<>{loading ? (<Pacman className="centered" />) :
+          (jogo.length > 0 ? (<div className="lista"><ListaJogos jogo={jogo} pagina={page} rota={rota} /></div>
+            /* <div className="paginacao"><Paginacao totalPages={totalPages} handleClick={handleClick} /></div> */
+          ) : (<h1 className="centered">Nenhum jogo encontrado.</h1>))}</>)}
     </div>);
 }
 
