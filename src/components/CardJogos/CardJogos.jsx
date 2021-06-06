@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext, Fragment } from "react";
 import "./style.css";
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import { FaChartLine } from 'react-icons/fa';
+import ButtonHistoricoModal from "../ButtonHistoricoModal";
 import { ReactComponent as Spinner } from '../../assets/img/spinner.svg';
 import VanillaTilt from 'vanilla-tilt';
 import fitty from 'fitty'; import axios from 'axios';
@@ -165,10 +166,8 @@ function CardJogos({ jogo, page, rota }) {
                                                 {onWishlist === false && (<AddWishlist />)}
                                                 {(usuario.username !== '' && onWishlist) === true && (<RemoveWishlist />)}
                                             </td>
-                                            <td style={{ float: "right" }}>
-                                                <span data-tooltip="Histórico de Preços" style={{ fontSize: "14px" }}>
-                                                    <a href="/#"><FaChartLine size={25} /></a>
-                                                </span>
+                                            <td style={{ float: "right" }}>                                                
+                                                <ButtonHistoricoModal plain={jogo.plain}/>
                                             </td>
                                         </tr>
                                     </tbody>

@@ -1,0 +1,18 @@
+.modal-content {
+    width: 700px;
+    background-color: #0d0d0d;
+    color: white;
+}
+.modal-dialog {
+    max-width: none;
+    position: relative;    
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;	
+    width: 100%;	
+    flex-wrap: wrap;     
+}
+.table {
+    color: white;
+}

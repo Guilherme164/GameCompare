@@ -3,7 +3,8 @@
   overflow: hidden;    
   width: 100%;
   display: flex;
-  background: linear-gradient(5deg,#9000EB, #4F02D6);
+  /* background: linear-gradient(5deg,#9000EB, #4F02D6); */
+  background: linear-gradient(5deg,#1d052c, #1b0641);
 }
 
 .content{ 

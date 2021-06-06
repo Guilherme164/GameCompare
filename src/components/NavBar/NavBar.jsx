@@ -19,7 +19,7 @@ function NavBar() {
                         (<Link className="linknav" onClick={() => setLoginModal(true)}>Lista de desejos</Link>) :
                         (<Link className="linknav" to="/WishList">Lista de desejos</Link>)}
                 </Nav>
-                <Form inline>
+                <Form inline>                    
                     {usuario.username === '' ?
                         (<Fragment>
                             <ModalCadastroLogin />

@@ -13,3 +13,7 @@ export const connectUser = axios.create({
 export const createUser = axios.create({
      baseURL: 'https://game-oferta-api.herokuapp.com/user'
 });
+
+export const teste = axios.create({
+     baseURL:'https://game-oferta-api.herokuapp.com'
+});
