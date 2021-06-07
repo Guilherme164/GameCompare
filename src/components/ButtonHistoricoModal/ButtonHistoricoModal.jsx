@@ -12,7 +12,9 @@ function ButtonHistoricoModal(props) {
     return (
         <div className="mod">
             <span data-tooltip="Histórico de Preços" style={{ fontSize: "14px" }} onClick={handleShow}>
-                <a href="/#"><FaChartLine size={25} /></a>
+                {/* <a href="/#"> */}
+                    <FaChartLine size={25} />
+                    {/* </a> */}
             </span>  
             { show ===false ? (<Fragment></Fragment>): 
                 <HistoricoModal show={show} plain={props.plain} handleClose={handleClose} />
