@@ -13,6 +13,51 @@
     width: 100%;	
     flex-wrap: wrap;     
 }
+
+.modal-title{
+    width: 100%;
+}
+
+.modal-title div{
+    display: inline-block;
+    width: 30%;
+    font-size: .7em;
+}
+
+.game-title{
+    width: 65% !important;
+    padding-right: 20px;
+    text-align: left;
+    font-size: 1.3em !important;
+    color: #888;
+}
+
+.modal-body{
+    padding-top: 5px;
+}
+
+.modal span{
+    display: inline-block;
+    font-size: 0.8em;
+}
+
 .table {
     color: white;
+    margin-top: 1em;
+}
+
+.table thead th{
+    border-top: none;
+}
+
+.store-name{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(66, 66, 66);
+    color: #10ebcd;
+}
+
+.price-cut{
+    color: #10ebcd;
 }

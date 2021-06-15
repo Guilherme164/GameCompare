@@ -95,7 +95,7 @@ function JogosGerais({ rota }) {
       {(rota === 'wishlist' && usuario.username === '') ?
         (<h1 className="centered">Faça login para ver a sua Wishlist.</h1>) :
         (<>{loading ? (<Pacman className="centered" />) :
-          (jogo.length > 0 ? (<div className="lista"><ListaJogos jogo={jogo} pagina={page} rota={rota} /></div>
+          (jogo.length > 0 ? (<div className="lista"><ListaJogos jogo={jogo} pagina={page} rota={rota} storeFilter={storeFilter}/></div>
             /* <div className="paginacao"><Paginacao totalPages={totalPages} handleClick={handleClick} /></div> */
           ) : (<h1 className="centered">Nenhum jogo encontrado.</h1>))}</>)}
     </div>);

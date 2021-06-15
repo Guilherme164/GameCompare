@@ -8,7 +8,7 @@ import VanillaTilt from 'vanilla-tilt';
 import fitty from 'fitty'; import axios from 'axios';
 import { LoginContext } from '../../contexts/LoginContext';
 
-function CardJogos({ jogo, page, rota }) {
+function CardJogos({ jogo, page, rota, storeFilter }) {
     const [onWishlist, setOnWishlist] = useState(jogo.on_wishlist); //no, loading, yes
     const cover = jogo.cover;
     const lojas = jogo.deals;
@@ -167,7 +167,7 @@ function CardJogos({ jogo, page, rota }) {
                                                 {(usuario.username !== '' && onWishlist) === true && (<RemoveWishlist />)}
                                             </td>
                                             <td style={{ float: "right" }}>                                                
-                                                <ButtonHistoricoModal plain={jogo.plain}/>
+                                                <ButtonHistoricoModal plain={jogo.plain} storeFilter={storeFilter}/>
                                             </td>
                                         </tr>
                                     </tbody>
