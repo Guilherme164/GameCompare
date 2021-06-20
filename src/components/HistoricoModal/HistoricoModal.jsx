@@ -61,7 +61,7 @@ function HistoricoModal({ plain, show, handleShow, handleClose, storeFilter }) {
                         <thead>
                             <tr>
                                 <th>Loja</th>
-                                <th>Data de Oferta</th>
+                                <th>Data</th>
                                 <th>Preço (R$)</th>
                                 <th>Desconto</th>
                             </tr>
