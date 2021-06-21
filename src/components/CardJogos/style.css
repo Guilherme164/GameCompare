@@ -88,6 +88,11 @@ body{
   margin-left: 30px;
 }
 
+.game-card-table a{
+  color: #fff;
+  text-decoration: none;
+}
+
 .game-card td{
   padding-top: 2px;
   padding-bottom: 2px;
@@ -249,8 +254,8 @@ body{
   opacity: 0;
 }
 
-.gratis{
-  color: gold;
+.gratis a{
+  color: gold !important;
 }
 
 .add-wishlist{

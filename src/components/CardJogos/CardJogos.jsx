@@ -78,19 +78,21 @@ function CardJogos({ jogo, page, rota, storeFilter }) {
                     <span className="old-price"><span className="real">R$</span>
                         <span style={{ textDecoration: "line-through" }}>{props.precoAnterior.replace('.', ',')}</span></span>
                     <span className="new-price">
-                        {props.preco > 0 && (<Fragment><span className="real">R$</span>{props.preco.replace('.', ',')}</Fragment>)}
-                        {props.preco == 0 && (<span className="gratis">Grátis</span>)}
+                        {props.preco > 0 && (<Fragment>
+                            <span className="real">R$</span><a target="_blank" href={props.url}>{props.preco.replace('.', ',')}</a>
+                        </Fragment>)}
+                        {props.preco == 0 && (<span className="gratis"><a target="_blank" href={props.url}>Grátis</a></span>)}
                     </span>
                 </span>
             </span>)
         }
-        else if (props.preco > 0) return <span><span className="real">R$</span>{props.preco.replace('.', ',')}</span>
-        else return <span className="gratis">Grátis</span>
+        else if (props.preco > 0) return <span><span className="real">R$</span><a target="_blank" href={props.url}>{props.preco.replace('.', ',')}</a></span>
+        else return <span className="gratis"><a target="_blank" href={props.url}>Grátis</a></span>
     }
 
     function Desconto(props) {
         if (props.desconto > 0)
-            return <td className="td-cut">{props.desconto}%</td>
+            return <td className="td-cut"><a target="_blank" href={props.url}>{props.desconto}%</a></td>
         else
             return <td className="td-nocut"></td>
     }
@@ -127,10 +129,11 @@ function CardJogos({ jogo, page, rota, storeFilter }) {
                                 <table className="game-card-table">
                                     <tbody>
                                         <tr>
-                                            <td className="td-left">{lojas[0].store_name}</td>
+
+                                            <td className="td-left"><a target="_blank" href={lojas[0].url}>{lojas[0].store_name}</a></td>
                                             <td className="td-right"><Preco preco={lojas[0].price_new} desconto={lojas[0].price_cut}
-                                                precoAnterior={lojas[0].price_old} /></td>
-                                            <Desconto desconto={lojas[0].price_cut} />
+                                                precoAnterior={lojas[0].price_old} url={lojas[0].url} /></td>
+                                            <Desconto desconto={lojas[0].price_cut} url={lojas[0].url} />
                                         </tr>
                                     </tbody>
                                 </table>
@@ -141,10 +144,10 @@ function CardJogos({ jogo, page, rota, storeFilter }) {
                                         <tbody>
                                             {lojas.slice(1).map(function (lojas, i) {
                                                 return <tr key={lojas.id_deal}>
-                                                    <td className="td-left">{lojas.store_name}</td>
+                                                    <td className="td-left"><a target="_blank" href={lojas.url}>{lojas.store_name}</a></td>
                                                     <td className="td-right"><Preco preco={lojas.price_new} desconto={lojas.price_cut}
-                                                        precoAnterior={lojas.price_old} /></td>
-                                                    <Desconto desconto={lojas.price_cut} />
+                                                        precoAnterior={lojas.price_old} url={lojas.url} /></td>
+                                                    <Desconto desconto={lojas.price_cut} url={lojas.url} />
                                                 </tr>
                                             })}
                                         </tbody>
@@ -166,8 +169,8 @@ function CardJogos({ jogo, page, rota, storeFilter }) {
                                                 {onWishlist === false && (<AddWishlist />)}
                                                 {(usuario.username !== '' && onWishlist) === true && (<RemoveWishlist />)}
                                             </td>
-                                            <td style={{ float: "right" }}>                                                
-                                                <ButtonHistoricoModal plain={jogo.plain} storeFilter={storeFilter}/>
+                                            <td style={{ float: "right" }}>
+                                                <ButtonHistoricoModal plain={jogo.plain} storeFilter={storeFilter} />
                                             </td>
                                         </tr>
                                     </tbody>
