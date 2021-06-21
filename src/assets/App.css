@@ -41,3 +41,8 @@ main {
     transform: rotate(360deg);
   }
 }
+
+.btn-login{
+  border: none !important;
+  background-color: #11998e !important;
+}

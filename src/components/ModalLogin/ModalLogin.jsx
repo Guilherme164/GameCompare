@@ -37,35 +37,35 @@ function ModalLogin() {
     }
 
     return (
-            <Modal styles={{ overlay: { background: 'black' } }} className="modal_fundo" show={loginModal} onHide={() => setLoginModal(false)} >
-                <div className="modal_body">
-                    <Modal.Header closeButton>
-                        <Modal.Title>Login</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form className="formulario" show={!loading}
-                            onSubmit={(event) => {
-                                event.preventDefault();
-                                login();
-                            }}>
-                            {error && (<div className="login-error">{error}</div>)}
-                            <Form.Group controlId="formGroupEmail">
-                                <Form.Label>E-mail</Form.Label>
-                                <Form.Control required disabled={loading} autoFocus value={email} type="email"
-                                    onChange={(e) => setEmail(e.target.value)} placeholder="E-mail" />
-                            </Form.Group>
-                            <Form.Group controlId="formGroupPassword">
-                                <Form.Label>Senha</Form.Label>
-                                <Form.Control required disabled={loading} autoFocus type="password" value={password}
-                                    onChange={(e) => setPassword(e.target.value)} placeholder="Senha" />
-                            </Form.Group>
-                            <Form.Group>
-                                {loading ? (<Button disabled><Spinner /></Button>) : (<Button type="submit">Entrar</Button>)}
-                            </Form.Group>
-                        </Form>
-                    </Modal.Body>
-                </div>
-            </Modal>
+        <Modal styles={{ overlay: { background: 'black' } }} className="modal_fundo modal-login" show={loginModal} onHide={() => setLoginModal(false)} >
+            <div className="modal_body">
+                <Modal.Header closeButton>
+                    <Modal.Title>Login</Modal.Title>
+                </Modal.Header>
+                <Modal.Body >
+                    <Form className="formulario" show={!loading}
+                        onSubmit={(event) => {
+                            event.preventDefault();
+                            login();
+                        }}>
+                        {error && (<div className="login-error">{error}</div>)}
+                        <Form.Group controlId="formGroupEmail">
+                            <Form.Label>Usuário ou E-mail</Form.Label>
+                            <Form.Control required disabled={loading} autoFocus value={email} type="text"
+                                onChange={(e) => setEmail(e.target.value)} placeholder="Usuário ou E-mail" />
+                        </Form.Group>
+                        <Form.Group controlId="formGroupPassword">
+                            <Form.Label>Senha</Form.Label>
+                            <Form.Control required disabled={loading} autoFocus type="password" value={password}
+                                onChange={(e) => setPassword(e.target.value)} placeholder="Senha" />
+                        </Form.Group>
+                        <Form.Group>
+                            {loading ? (<Button disabled className="btn-login"><Spinner /></Button>) : (<Button type="submit" className="btn-login">Entrar</Button>)}
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+            </div>
+        </Modal>
     );
 
 }

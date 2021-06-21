@@ -48,7 +48,7 @@ function ModalCadastroLogin(props) {
                 Cadastrar
             </Button>
 
-            <Modal styles={{ overlay: { background: 'black' } }} className="modal_fundo" show={show} onHide={handleClose} >
+            <Modal styles={{ overlay: { background: 'black' } }} className="modal_fundo modal-cadastro" show={show} onHide={handleClose} >
                 <div className="modal_body">
                     <Modal.Header closeButton>
                         <Modal.Title>Cadastre-se</Modal.Title>
@@ -80,7 +80,7 @@ function ModalCadastroLogin(props) {
                                     onChange={(e) => setPassword2(e.target.value)} placeholder="Senha" />
                             </Form.Group>
                             <Form.Group>
-                                {loading ? (<Button disabled><Spinner /></Button>) : (<Button type="submit">Salvar</Button>)}
+                                {loading ? (<Button disabled className="btn-login"><Spinner /></Button>) : (<Button type="submit" className="btn-login">Salvar</Button>)}
                             </Form.Group>
                         </Form>
                     </Modal.Body>

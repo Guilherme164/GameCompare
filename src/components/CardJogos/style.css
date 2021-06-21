@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
 *{
   margin: 0;
   padding: 0;
   /* box-sizing: border-box; */
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Montserrat;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }
 
 body{
@@ -63,6 +66,7 @@ body{
 .game-card-title{
   max-width: 235px;
   text-align: center;
+  font-family: Oswald;
 
   position: relative;
   top: 50%;
