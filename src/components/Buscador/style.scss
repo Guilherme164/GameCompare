@@ -149,15 +149,7 @@ $gray: #9b9b9b;
   font-size: .8em;
   color: #9b9b9b;
   text-align: center;
-  transform: translateY(15px);
-  opacity: 0%;
-  transition: .2s;
   margin-top: 7px;
-}
-
-#discount-slider:hover .slider-label{
-  opacity: 100%;
-  transform: translateY(0px);
 }
 
 .rangeslider-horizontal{

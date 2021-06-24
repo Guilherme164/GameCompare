@@ -3,6 +3,7 @@ import "./style.css";
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 import { FaChartLine } from 'react-icons/fa';
 import ButtonHistoricoModal from "../ButtonHistoricoModal";
+import ModalVerMais from "../ModalVerMais";
 import { ReactComponent as Spinner } from '../../assets/img/spinner.svg';
 import VanillaTilt from 'vanilla-tilt';
 import fitty from 'fitty'; import axios from 'axios';
@@ -10,6 +11,7 @@ import { LoginContext } from '../../contexts/LoginContext';
 
 function CardJogos({ jogo, page, rota, storeFilter }) {
     const [onWishlist, setOnWishlist] = useState(jogo.on_wishlist); //no, loading, yes
+    const [verMais, setVerMais] = useState(false);
     const cover = jogo.cover;
     const lojas = jogo.deals;
 
@@ -129,7 +131,6 @@ function CardJogos({ jogo, page, rota, storeFilter }) {
                                 <table className="game-card-table">
                                     <tbody>
                                         <tr>
-
                                             <td className="td-left"><a target="_blank" href={lojas[0].url}>{lojas[0].store_name}</a></td>
                                             <td className="td-right"><Preco preco={lojas[0].price_new} desconto={lojas[0].price_cut}
                                                 precoAnterior={lojas[0].price_old} url={lojas[0].url} /></td>
@@ -143,13 +144,24 @@ function CardJogos({ jogo, page, rota, storeFilter }) {
                                     <table className="game-card-table">
                                         <tbody>
                                             {lojas.slice(1).map(function (lojas, i) {
-                                                return <tr key={lojas.id_deal}>
-                                                    <td className="td-left"><a target="_blank" href={lojas.url}>{lojas.store_name}</a></td>
-                                                    <td className="td-right"><Preco preco={lojas.price_new} desconto={lojas.price_cut}
-                                                        precoAnterior={lojas.price_old} url={lojas.url} /></td>
-                                                    <Desconto desconto={lojas.price_cut} url={lojas.url} />
-                                                </tr>
+                                                if (i < 4) {
+                                                    return <tr key={lojas.id_deal}>
+                                                        <td className="td-left"><a target="_blank" href={lojas.url}>{lojas.store_name}</a></td>
+                                                        <td className="td-right"><Preco preco={lojas.price_new} desconto={lojas.price_cut}
+                                                            precoAnterior={lojas.price_old} url={lojas.url} /></td>
+                                                        <Desconto desconto={lojas.price_cut} url={lojas.url} />
+                                                    </tr>
+                                                }
                                             })}
+                                            {lojas.length > 5 && (
+                                                <tr key="ver-mais">
+                                                    <td colSpan={2}>
+                                                        <span data-tooltip="Ver todos os preços" className="ver-mais" onClick={() => setVerMais(true)}>Ver mais</span>
+                                                    </td>
+                                                    {verMais === false ? (<Fragment></Fragment>) :
+                                                        <ModalVerMais verMais={verMais} setVerMais={setVerMais} name={jogo.name} deals={jogo.deals} />
+                                                    }
+                                                </tr>)}
                                         </tbody>
                                     </table>
                                 }

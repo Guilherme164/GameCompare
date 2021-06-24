@@ -1,0 +1,69 @@
+.modal-content {
+    width: 700px;
+    background-color: #0d0d0d;
+    color: white;
+}
+.modal-dialog {
+    max-width: none;
+    position: relative;    
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;	
+    width: 100%;	
+    flex-wrap: wrap;     
+}
+
+.modal-title{
+    width: 100%;
+}
+
+.modal-title div{
+    display: inline-block;
+    width: 30%;
+    font-size: .7em;
+}
+
+.game-title{
+    width: 65% !important;
+    padding-right: 20px;
+    text-align: left;
+    font-size: 1.3em !important;
+    color: #888;
+}
+
+.modal-body{
+    padding-top: 5px;
+}
+
+.modal span{
+    display: inline-block;
+    font-size: 0.8em;
+}
+
+.table {
+    color: white;
+    margin-top: 1em;
+}
+
+.table thead th{
+    border-top: none;
+}
+
+.store-name{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(66, 66, 66);
+    color: #10ebcd;
+}
+
+.modal-ver-mais a{
+    color: #fff;
+    text-decoration: none;
+  }
+
+.price-cut a{
+    color: #10ebcd !important;
+}
+
