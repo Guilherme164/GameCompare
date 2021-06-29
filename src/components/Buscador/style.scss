@@ -176,3 +176,27 @@ $gray: #9b9b9b;
   display: none !important;
 }
 
+#price-range{
+  font-size: .8em;
+  padding-top: 7px;
+  color: #9b9b9b;
+}
+
+#price-range input{
+  width: 45px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(47,47,47);
+  // padding-left: 2px;
+  text-align: center;
+  color: #11998e;
+}
+
+#price-range span{
+  margin: 0 6px 0 6px;
+}
+
+.price-range-label{
+  text-align: center;
+  margin-bottom: 5px;
+}

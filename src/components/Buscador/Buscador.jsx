@@ -4,10 +4,13 @@ import { FaSearch } from 'react-icons/fa';
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
 
 import Horizontal from './Horizontal'
+import { useEffect } from "react";
 
 export default function Buscador(props) {
     const [pesquisa, setPesquisa] = useState("");
     const [storeFilter, setStoreFilter] = useState(false);
+    const [minPrice, setMinPrice] = useState(0);
+    const [maxPrice, setMaxPrice] = useState(299);
     const [discountFilter, setDiscountFilter] = useState(0);
     const options = [
         { value: 3, label: 'Amazon' },
@@ -50,6 +53,16 @@ export default function Buscador(props) {
         }
     }
 
+    // function adjustMinPrice(value){
+    //     setMinPrice(value);
+    //     if(value > maxPrice) setMaxPrice(value);
+    // }
+
+    // function adjustMaxPrice(value){
+    //     if(value < minPrice) setMaxPrice(minPrice);
+    //     else setMaxPrice(value);
+    // }
+
     const customStyles = {
         menuList: base => ({
             ...base,
@@ -77,8 +90,13 @@ export default function Buscador(props) {
         <div className="search-tools">
             <form className="form-search" onSubmit={(event) => {
                 event.preventDefault();
-                props.buscar(pesquisa, storeFilter, discountFilter);
+                props.buscar(pesquisa, storeFilter, discountFilter, minPrice, maxPrice);
             }}>
+                <div className="search-tools-item" id="price-range" style={{ width: "180px" }}>
+                    <div className='price-range-label'>Faixa de Preço (R$)</div>
+                     <span>Mín. <input type="number" min="0" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} /></span> 
+                     <span>Máx. <input type="number" min={minPrice} value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} /></span> 
+                </div>
                 <div className="search-tools-item" id="discount-slider" style={{ width: "150px" }}>
                     <Horizontal setDiscountFilter={setDiscountFilter}></Horizontal>
                 </div>

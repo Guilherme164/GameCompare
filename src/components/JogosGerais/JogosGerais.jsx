@@ -14,15 +14,19 @@ function JogosGerais({ rota }) {
   const [term, setTerm] = useState([]);
   const [storeFilter, setStoreFilter] = useState(false);
   const [discountFilter, setDiscountFilter] = useState(0);
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(299);
   const [jogo, setJogo] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
 
   const { usuario } = useContext(LoginContext);
 
-  function coletarDados(term, storeIDs, discountFilter) {
+  function coletarDados(term, storeIDs, discountFilter, minPrice, maxPrice) {
     setTerm(term);
     setStoreFilter(storeIDs);
     setDiscountFilter(discountFilter);
+    setMinPrice(minPrice);
+    setMaxPrice(maxPrice);
   }
 
   useEffect(() => {
@@ -30,9 +34,10 @@ function JogosGerais({ rota }) {
     let username = usuario ? usuario.username : '';
     let store_filter = storeFilter;
     let min_discount = discountFilter;
+    let price_range = minPrice + "," + maxPrice;
     var storeIDs = null;
     if (rota === "home") {
-      connect.get('', { params: { username, term, store_filter, min_discount } }).then((results) => {
+      connect.get('', { params: { username, term, store_filter, min_discount, price_range } }).then((results) => {
         if (storeFilter) {
           storeIDs = storeFilter.split(',');
           results.data.map((game) => {
@@ -82,7 +87,7 @@ function JogosGerais({ rota }) {
         setLoading(false);
       });
     }
-  }, [rota, usuario, term, storeFilter, discountFilter]);
+  }, [rota, usuario, term, storeFilter, discountFilter, minPrice, maxPrice]);
 
 
   const handleClick = num => {
