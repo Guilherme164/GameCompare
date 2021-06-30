@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import "./style.scss";
 import { FaSearch } from 'react-icons/fa';
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
-
 import Horizontal from './Horizontal'
-import { useEffect } from "react";
 
 export default function Buscador(props) {
     const [pesquisa, setPesquisa] = useState("");
@@ -27,10 +25,6 @@ export default function Buscador(props) {
         { value: 43, label: 'Uplay' }
     ];
 
-    function changeDiscountFilter(value) {
-        setDiscountFilter(value);
-    }
-
     function changeLabel(ref) {
         var label = ref.placeholderButtonLabel, value = ref.value;
         if (!value) return label;
@@ -52,16 +46,6 @@ export default function Buscador(props) {
             setStoreFilter(false);
         }
     }
-
-    // function adjustMinPrice(value){
-    //     setMinPrice(value);
-    //     if(value > maxPrice) setMaxPrice(value);
-    // }
-
-    // function adjustMaxPrice(value){
-    //     if(value < minPrice) setMaxPrice(minPrice);
-    //     else setMaxPrice(value);
-    // }
 
     const customStyles = {
         menuList: base => ({
@@ -90,12 +74,13 @@ export default function Buscador(props) {
         <div className="search-tools">
             <form className="form-search" onSubmit={(event) => {
                 event.preventDefault();
+                props.setResultados(true);
                 props.buscar(pesquisa, storeFilter, discountFilter, minPrice, maxPrice);
             }}>
                 <div className="search-tools-item" id="price-range" style={{ width: "180px" }}>
                     <div className='price-range-label'>Faixa de Preço (R$)</div>
-                     <span>Mín. <input type="number" min="0" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} /></span> 
-                     <span>Máx. <input type="number" min={minPrice} value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} /></span> 
+                    <span>Mín. <input type="number" min="0" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} /></span>
+                    <span>Máx. <input type="number" min={minPrice} value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} /></span>
                 </div>
                 <div className="search-tools-item" id="discount-slider" style={{ width: "150px" }}>
                     <Horizontal setDiscountFilter={setDiscountFilter}></Horizontal>
@@ -115,7 +100,7 @@ export default function Buscador(props) {
                                 setPesquisa(event.target.value);
                             }}
                         />
-                        <label className="search-label">Pesquisar jogo</label>
+                        <label className="search-label">{props.rota === 'wishlist' ? (<>Pesquisar na Wishlist</>) : (<>Pesquisar jogo</>)}</label>
                         <div className="search-icon">
                             <button type="submit" className="search-btn" id="search_btn" name="search_btn">
                                 <FaSearch size={23}></FaSearch></button>

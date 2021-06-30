@@ -40,9 +40,12 @@ function App() {
           <NavBar>
           </NavBar>
           <Switch>
-            <Route exact path='/'>
-              <Home />
-            </Route>
+            <Route
+              exact path='/'
+              render={(props) => (
+                <Home {...props} key={Math.random()} />
+              )}
+            />
             <Route path="/WishList">
               <WishList />
             </Route>

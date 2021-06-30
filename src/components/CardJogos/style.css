@@ -435,13 +435,8 @@ body{
   }
 }
 
-.normal-glow:after, .golden-glow:after{
+.normal-glow:after, .golden-glow:after, .green-glow:after{
   filter: blur(8px);
-  border-radius: 10px;
-}
-
-.green-glow:after{
-  filter: blur(16px);
   border-radius: 10px;
 }
 

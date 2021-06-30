@@ -8,6 +8,7 @@ import { ReactComponent as Spinner } from '../../assets/img/spinner.svg';
 import VanillaTilt from 'vanilla-tilt';
 import fitty from 'fitty'; import axios from 'axios';
 import { LoginContext } from '../../contexts/LoginContext';
+import blankImage from '../../assets/img/blank.jpg';
 
 function CardJogos({ jogo, page, rota, storeFilter }) {
     const [onWishlist, setOnWishlist] = useState(jogo.on_wishlist); //no, loading, yes
@@ -106,7 +107,8 @@ function CardJogos({ jogo, page, rota, storeFilter }) {
                     ((usuario.username !== '' && onWishlist) ? "block-card golden-glow" : "block-card normal-glow")}>
                     <div className="game-card">
                         <div className="img-card">
-                            <img alt={jogo.name[0]} src={cover}></img>
+                            {cover ? (<img alt={jogo.name} src={cover}></img>) : (<img alt={jogo.name} src={blankImage}></img>)}
+                            
                         </div>
                         {(usuario.username !== '' && onWishlist === true) && (
                             <Fragment>

@@ -6,6 +6,10 @@ export const connectWish = axios.create({
      baseURL: 'https://game-oferta-api.herokuapp.com'
 });
 
+export const connectHomePage = axios.create({
+     baseURL: 'https://game-oferta-api.herokuapp.com/get_homepage'
+});
+
 export const connectUser = axios.create({         
      baseURL: 'https://game-oferta-api.herokuapp.com/login'
 });
