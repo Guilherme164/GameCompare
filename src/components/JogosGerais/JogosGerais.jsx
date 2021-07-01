@@ -142,19 +142,19 @@ function JogosGerais({ rota }) {
         {loading ? (<Pacman className="centered" />) : (
           <Fragment>
             <div className="lista">
-              <SectionHeader titulo="Mais Desejados"/>
+              <SectionHeader titulo="Ofertas em Destaque"/>
               <ListaJogos jogo={topGames} rota={rota} storeFilter={storeFilter} lineSize={lineSize} />
             </div>
             <div className="lista">
-              <div className="section-title"><span>Temporariamente Gratuitos</span><div className="section-hr"></div></div>
+              <SectionHeader titulo="Temporariamente Gratuitos"/>
               <ListaJogos jogo={topFree} rota={rota} storeFilter={storeFilter} lineSize={lineSize} />
             </div>
             <div className="lista">
-              <div className="section-title"><span>Adicionados Recentemente</span><div className="section-hr"></div></div>
+              <SectionHeader titulo="Adicionados Recentemente"/>
               <ListaJogos jogo={topNew} rota={rota} storeFilter={storeFilter} lineSize={lineSize} />
             </div>
             <div className="lista">
-              <div className="section-title"><span>Free to Play</span><div className="section-hr"></div></div>
+              <SectionHeader titulo="Free To Play"/>
               <ListaJogos jogo={topF2P} rota={rota} storeFilter={storeFilter} lineSize={lineSize} />
             </div>
           </Fragment>
