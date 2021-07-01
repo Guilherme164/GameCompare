@@ -5,6 +5,7 @@ import ModalLogin from "../ModalLogin";
 import ModalCadastroLogin from "../ModalCadastroLogin";
 import { Nav, Form, Navbar, Button } from "react-bootstrap";
 import { LoginContext } from '../../contexts/LoginContext';
+import logo  from '../../assets/img/logo.png';
 
 function NavBar() {
 
@@ -14,10 +15,11 @@ function NavBar() {
         <header>
             <Navbar className="topnav">
                 <Nav className="mr-auto">
-                    <Link className="linknav " to="/">Home</Link>
+                    <Link className="linknav " to="/"><img alt="logo" src={logo} className="logo"></img></Link>
+                    <Link className="linknav " to="/"><div>Home</div></Link>
                     {usuario.username === '' ?
-                        (<Link className="linknav" onClick={() => setLoginModal(true)}>Lista de desejos</Link>) :
-                        (<Link className="linknav" to="/WishList">Lista de desejos</Link>)}
+                        (<Link className="linknav" onClick={() => setLoginModal(true)}><div>Lista de desejos</div></Link>) :
+                        (<Link className="linknav" to="/WishList"><div>Lista de desejos</div></Link>)}
                 </Nav>
                 <Form inline>                    
                     {usuario.username === '' ?
